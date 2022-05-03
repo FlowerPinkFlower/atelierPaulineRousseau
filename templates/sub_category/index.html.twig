@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Sous categorie{% endblock %}
+
+{% block body %}
+
+<h1>Sous categorie</h1>
+
+<a class="btn btn-success" href="{{path('new_subCate')}}" >Créer</a>
+    <div class="container">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th class="text-center" scope="col">Nom sous categorie</th>
+                    <th class="text-center" scope="col">Description sous categorie</th>
+                </tr>
+            </thead>
+            <tbody>
+                    {% for subCategory in subCate %}
+                        <tr>
+                            <td class="text-center" scope="col">{{subCategory.name}}</td>
+                            <td class="text-center" scope="col">{{subCategory.description}}</td>
+                            <td>
+                                <a href="{{path('delete_SubCate', {'id': subCategory.id})}}" class="btn btn-warning">Supprimer</a>
+                                <a href="{{path('update_subCate', {'id': subCategory.id})}}" class="btn btn-warning">Modifier</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}

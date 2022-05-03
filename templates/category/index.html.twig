@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Catégories{% endblock %}
+
+{% block body %}
+
+<h1>Catégorie</h1>
+
+<a class="btn btn-warning" href="{{path('new_cate')}}">Créer</a>
+    <div class="container">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th class="text-center" scope="col">Nom</th>
+                    <th class="text-center" scope="col">Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                    {% for cate in categories %}
+                        <tr>
+                            <td class="text-center" scope="col">{{cate.name}}</td>
+                            <td class="text-center" scope="col">{{cate.description}}</td>
+                            <td>
+                                <a href="{{path('delete_cate', {'id':cate.id} ) }}" class="btn btn-success">Supprimer</a>
+                                <a href="{{path('add_cate', {'id':cate.id} )}}" class="btn btn-success">Modifier</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

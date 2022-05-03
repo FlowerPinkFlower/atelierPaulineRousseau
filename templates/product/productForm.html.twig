@@ -1,0 +1,26 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Produits{% endblock %}
+
+{% block body %}
+
+    {{ form_start(formProd) }}
+        {{ form_row(formProd.name, {'label': 'Nom' , 'attr' : {placeholder:"Entrer le nom"} }) }}
+        {{ form_row(formProd.quantity, {'label': 'Quantité', 'attr' : {placeholder:"Entrer la quantité"} } ) }}
+        {{ form_row(formProd.unitPrice, {'label': 'Prix Unitaire', 'attr' : {placeholder:"Entrer le prix unitaire"} } ) }}
+        {{ form_row(formProd.description, {'label': 'Description', 'attr' : {placeholder:"Entrer la description"} } ) }}
+        {{ form_row(formProd.category, {'label': 'Categorie', 'attr' : {placeholder:"Entrer la catégorie"} } ) }}
+        {{ form_row(formProd.subCategory, {'label': 'Sous Categorie', 'attr' : {placeholder:"Entrer la sous catégorie"} } ) }}
+
+
+    {% if mode %}
+        <button type="submit" class="btn btn-success">Modifier le produit</button>
+    {% else %}
+        <button type="submit" class="btn btn-success">Créer le produit</button>
+    {% endif %}
+
+    {{ form_end(formProd) }}
+
+    <a href="{{path('prod')}}" type="submit" class="btn btn-primary">Retour</a>
+
+{% endblock %}

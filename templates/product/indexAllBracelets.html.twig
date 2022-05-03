@@ -1,0 +1,59 @@
+{# VERSION EN BLOC #}
+{% extends 'base.html.twig' %}
+
+{% block title %}BRACELETS{% endblock %}
+
+{% block body %}
+<h1>BRACELETS</h1>
+
+    <div class="container">
+       <section class="product-list">
+                    {% for brac in bracelet %}
+                    <div class="card">
+                        <div class="image"> <img src="https://i.etsystatic.com/34806363/r/il/9008d3/3879418349/il_1588xN.3879418349_omhf.jpg" alt="boucle d'oreille"> </div>
+                        <div class="title">{{brac.name}}</div>
+                        <div class="text">{{brac.unitprice}}</div>
+                        <a class="buy-now" href="#">Ajouter au panier</a>
+                        <a class="buy-now" href="#">Voir produit</a>
+                    </div>
+                    {% endfor %}
+        </section>
+    </div>
+{% endblock %}
+
+ 
+        
+    
+{# VERSION EN TABLEAU #}
+{# 
+
+{% extends 'base.html.twig' %}
+
+{% block title %}BRACELETS{% endblock %}
+
+{% block body %}
+<h1>BRACELETS</h1>
+
+    <div class="container">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th class="text-center" scope="col">Nom</th>
+                    <th class="text-center" scope="col">Description</th>
+                    <th class="text-center" scope="col">Quantité</th>
+                    <th class="text-center" scope="col">Prix unitaire</th>
+                </tr>
+            </thead>
+            <tbody>
+                    {% for brac in bracelet %}
+                        <tr>
+                            <td class="text-center" scope="col">{{brac.name}}</td>
+                            <td class="text-center" scope="col">{{brac.description}}</td>
+                            <td class="text-center" scope="col">{{brac.quantity}}</td>
+                            <td class="text-center" scope="col">{{brac.unitprice}}</td> 
+                        </tr>
+                    {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %} #}

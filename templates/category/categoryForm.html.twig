@@ -1,0 +1,21 @@
+{% extends "base.html.twig" %}
+
+{% block title %}{% endblock %}
+
+
+{% block body %}
+    {{ form_start(formCate) }}
+        {{ form_row(formCate.name, {"label":"Nom",'attr': {placeholder:"Entrer le nom de la catégorie"} }) }}
+        {{ form_row(formCate.description, {"label":"Description",'attr': {placeholder:"Entrer la description de la catégorie"} }) }}
+    
+    {% if mode %}
+        <button type="submit" class="btn btn-success">Modifier la catégorie</button>
+    {% else %}
+        <button type="submit" class="btn btn-primary" >Créer une nouvelle catégorie</button>
+
+    {% endif %}
+    
+    {{ form_end(formCate) }}   
+    <a href="{{path('cate')}}" type="submit" class="btn btn-primary">Retour</a>
+
+{% endblock %}
