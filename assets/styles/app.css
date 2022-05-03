@@ -1,5 +1,7 @@
 *{
-    margin:0%;
+    margin:0;
+    padding:0;
+
 }
 
 a{
@@ -7,11 +9,11 @@ a{
 }
 
 body{
-  font-size: 10px;
+  font-size: 12px;
 }
 
 .navbar{
-    background-color: #ffe4e1;
+    background-color: #fadadd;
 }
 
 
@@ -49,7 +51,7 @@ h1{
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: #ffffff;
+  background-color: white;
   min-width: 160px;
   z-index: 1;
 }
@@ -214,7 +216,7 @@ button{
 .hero-btn{
   color:white;
   display:inline-block;
-  background-color:#ffe4e1;
+  background-color:#fadadd;
   padding:20px 10px 20px 10px;
   border-radius: 5px;
   font-size:15px;
@@ -223,30 +225,30 @@ button{
 }
 
 .hero-btn:hover{
-  color:#ffe4e1;
+  color:#fadadd;
   display:inline-block;
-  background-color:rgba(255, 255, 255, 0.204);
-  border:solid 2px #ffe4e1;
+  background-color:white;
+  border:solid 2px #fadadd;
   padding:20px 10px 20px 10px;
   border-radius: 5px;
-  /* text-transform:uppercase; */
 }
 
 /* COURSE */
 /* Mise en forme de la section */
-/* .course{
-  width:80%;
+.course{
+  width:90%;
   margin: auto;
-  text-align: center; */
-  /* padding-top:100px; */
-/* } */
-/* 
-h1{
-  font-size:36px;
-  font-weight:600px;
+  text-align: center;
+  padding-top:100px;
 }
 
-p{
+.course h1{
+  font-size:36px;
+  font-weight:600px;
+  text-transform: uppercase;
+}
+
+.course p{
   color: plum;
   font-size:14px;
   font-weight:300px;
@@ -254,13 +256,13 @@ p{
   padding: 10px;
 }
 
-.row{
+.course .row{
   margin-top:5%;
   display:flex;
   justify-content:space-between;
 }
 
-.course-col{
+.course .course-col{
   flex-basis:31%;
   background: rgba(250, 210, 250, 0.164);
   border-radius: 10px;
@@ -269,12 +271,12 @@ p{
   box-sizing: border-box;
 }
 
-h3{
+.course h3{
   text-align:center;
   font-weight: 600;
   margin:10px 0;
 }
- */
+
 
 
 
@@ -282,7 +284,7 @@ h3{
 /* CONTACT */
 /************/
   /* Style inputs with type="text", select elements and textareas */
-input, select, textarea {
+.contact input, select, textarea {
   width: 100%; /* Full width */
   padding: 12px; /* Some padding */ 
   border: 1px solid #ccc; /* Gray border */
@@ -326,7 +328,7 @@ section .container{
   position: relative;
   width: 800px;
   height:800px;
-  background-color: #ffff;
+  background-color: white;
   box-shadow: 0 15px 50px rgba(0,0,0,0.1);
   overflow: hidden;
 }
@@ -361,7 +363,7 @@ section .container .user .formBx{
   position:relative;
   width:50%;
   height:100%;
-  background-color: #ffff;
+  background-color: white;
   display:flex;  
   justify-content: center;
   align-items: center;
