@@ -15,7 +15,8 @@
                         <div class="title">{{neck.name}}</div>
                         <div class="text">{{neck.unitprice}}</div>
                         <a class="buy-now" href="#">Ajouter au panier</a>
-                        <a class="buy-now" href="#">Voir produit</a>
+                        <a class="buy-now" href="{{path('necklace', {'id': neck.id} )}}">Voir produit</a>
+
                     </div>
                     {% endfor %}
         </section>

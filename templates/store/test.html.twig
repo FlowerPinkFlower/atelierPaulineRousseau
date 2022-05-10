@@ -1,0 +1,93 @@
+{% extends "base.html.twig" %}
+
+{% block title %}TEST{% endblock %}
+
+
+{% block body %}
+
+        {# <h5 class="h5 mb-5 font-weight-normal">Boucles d'oreilles effet marbré bleu clair blanc argenté</h5>
+        <p class="price_product">22€</p> 
+        <a href="#" class="btn btn-primary">Ajouter au panier</a>
+        <h5 class="h5 mb-5 font-weight-normal">Description</h5>    
+        <p class="#">Livrée dans une boîte et un pochon <br>
+            Pour assurer une longue vie à votre bijou, consulter nos conseils d'entretien.
+        </p> #}
+
+    {# {% for prod in products %}
+        <p class="#">{{prod.unitPrice}}</p> 
+        <a href="#" class="btn btn-primary">Ajouter au panier</a>
+        <h1 class="h3 mb-3 font-weight-normal">{{prod.name}}</h1>
+        <p class="#">{{prod.description}}</p>    
+    {% endfor %}
+        <p class="#">Livrée dans une boîte et un pochon <br>
+            Pour assurer une longue vie à votre bijou, consulter nos conseils d'entretien.
+        </p> #}
+
+
+<div class="car-wrapper">
+    <div class="car">
+        <div class="product-imgs">
+            <div class="img-display">
+                <div class="img-showcase">
+                    <img src="https://bit.ly/3vYFkPn" alt="boucles 1">
+                    <img src="https://bit.ly/3vPpgza" alt="boucles 2">
+                </div>
+            </div>
+            
+            <div class="img-select">
+                <div class="img-item">
+                    <a href="#" data-id="1">
+                        <img src="https://bit.ly/3vYFkPn" alt="boucles 1">
+                    </a>
+                </div>
+            
+                <div class="img-item">
+                    <a href="#" data-id="2">
+                        <img src="https://bit.ly/3vPpgza" alt="boucles 2">
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="product-content">
+            <h2 class="product-title">Boucles d'oreilles effet marbré bleu clair blanc argenté</h2>
+            
+            
+            <div class="product-price">
+                <!-- <p class="last-price">Ancien prix: <span>37€</span></p> -->
+                <p class="new-price"><span>29€</span></p>
+            </div>
+
+             <div class="purchase-info">
+                {# <input type="number" min="0" value="1"> #}
+                <button type="button" class="btn">Ajouter au panier</button>
+                {# <button type="button" class="btn">Compare</button> #}
+            </div>
+            
+            {# <a href="#" class="product-link">Ajouter au panier</a> #}
+            
+            <div class="product-detail">
+                <h2>Description</h2>
+                {# <p>Boucles d'oreilles marbré</p> #}
+                <ul>
+                    <li>Article fait main</li>
+                    <li>Envoyé par une petite entreprise basée ici : France</li>
+                    <li>Longueur: 7 Centimètres; Largeur: 2.5 Centimètres</li>
+                    <li>Matériaux : pate polymere, argile polymere</li>
+                    <li>Fermeture: Crochet d'oreille</li>
+                </ul>
+            </div>
+
+            <div class="social-links">
+                <a href="https://www.etsy.com/fr/shop/AtelierPaulineR"></a>
+                <a href="https://www.instagram.com/atelier.pauline_bijoux/"></a> 
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+{% endblock %}

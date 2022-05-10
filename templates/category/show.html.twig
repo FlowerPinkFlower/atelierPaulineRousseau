@@ -1,0 +1,25 @@
+{% extends "base.html.twig" %}
+
+{% block title %}SOUS CATEGORIES{% endblock %}
+
+{% block body %}
+
+<h1>Sous-Categorie</h1>
+
+<div class="container">
+       <section class="product-list">
+       {# <pre>
+           {{ dump(subCate) }}
+       </pre> #}
+                    
+                    <div class="card">
+                        {# <div class="image"> <img src="https://i.etsystatic.com/34806363/r/il/9008d3/3879418349/il_1588xN.3879418349_omhf.jpg" alt="boucle d'oreille"> </div> #}
+                        <div class="title">{{product.name}}</div>
+                        <div class="text">{{product.unitprice}}</div>
+                        <a class="buy-now" href="#">Ajouter au panier</a>
+                        <a class="buy-now" href="#">Voir produit</a>
+                    </div>
+        </section>
+    </div>
+    
+{% endblock %}

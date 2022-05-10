@@ -4,7 +4,6 @@
 
 {% block body %}
 <section class="connection">
-<h2>Inscription</h2>
  <section>
     <div class="container">
         <!-- SE CONNECTER -->
@@ -12,8 +11,10 @@
             <div class="imgBx"><img src="https://louyetu.fr/wp/wp-content/uploads/2019/11/manif2-1910x0.jpeg" ></div>
             <div class="formBx">
                     <form method="post">
-                        <h1 class="h3 mb-3 font-weight-normal">Pauline Rousseau</h1>
-                        <h1 class="h3 mb-3 font-weight-normal">Atelier</h1>
+                        <a class="title_retour" href="{{path('app_login')}}">← Retour</a>
+
+                        <h1 class="title_connexion">INSCRIPTION</h1> <br/>
+                        <h1 class="title_atelier">Pauline Rousseau <br/> Atelier</h1> <br/>
                     {{ form_start(registrationForm) }}
                             {{ form_row(registrationForm.lastname, {
                                 label:'Nom'

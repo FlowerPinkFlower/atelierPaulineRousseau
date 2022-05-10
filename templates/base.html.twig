@@ -1,7 +1,14 @@
 <!DOCTYPE html>
+<html lang="fr">
+    <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+{# <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8">
+        <meta charset="UTF-8"> #}
         <title>{% block title %}🌸Atelier Pauline🌸{% endblock %}</title>
         {# <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>🌸</text></svg>"> #}
         {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
@@ -24,83 +31,109 @@
                 {# <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button> #}
+
+                    
+
                     <div class="collapse navbar-collapse" >
-                        <ul class="nav">
+                        {# <ul class="nav"> #}
+                    <div class="left">
+                            
                             <li class="nav-item">
-                                <a class="navbar-brand" href="{{path('home')}}">ATELIER PAULINE</a>
+                                <a class="navtitle" href="{{path('accueil')}}">ACCUEIL</a>
                             </li>
+
 
                         {# Changer la classe navbar-nav me-auto #}
                         {# LISTE DEROULANTE PRODUITS #}
                             <li class="nav-item">
                                 <div class="dropdown">
                                     <span class="dropbtn">SHOP</span> 
-
                                     <div class="dropdown-content">Pierres Naturelles
                                         <a class="subCategory" href="{{path('all_necklaces')}}">Colliers</a>
-                                        <a class="subCategory" href="{{path('all_bracelets')}}">Bracelets</a>
+                                        {# <a class="subCategory" href="{{path('all_bracelets')}}">Bracelets</a> #}
                                         <a class="subCategory" href="{{path('all_earings')}}">Boucles d'Oreilles</a>
-                                    <div>Laitons
-                                        </div> 
+                                    </div>
+                                
+                                {# {% for cate in product %}
+                                    <li>{{cate}}</li> #}
+
+                                    {# {% for item in items %}
+                                        <a class="subCategory" href="{{path('subCategory')}}"></a>
+                                        
+                                    {% endfor %} #}
+                                     
+                                {# {% endfor %} #}
+                                        
                                     </div>
                                 </div>
                             </li>
 
-                            {# <a class="logo" href="#"><img class="logo" src="https://i.etsystatic.com/isla/6775b4/55021925/isla_500x500.55021925_5qz1hyz2.jpg?version=0" width="20%"></br></a> #}
                             
                             <li class="nav-item">
                             <div class="dropdown">
                                 <a class="navtitle" href="#">LA MARQUE</a>
                                 <div class="dropdown-content">
-                                        <a class="subCategory" href="#">Notre savoir-faire</a>
+                                        <a class="subCategory" href="{{path('savoirfaire')}}">Notre savoir-faire</a>
                                 </div>
                             </div>
                             </li>
+                    </div>
+
 
                             <li class="nav-item">
-                            <div class="dropdown">
-                                <a class="navtitle" href="#">AIDE</a>
-                                <div class="dropdown-content">
-                                        <a class="subCategory" href="#">FAQ</a>
-                                        <a class="subCategory" href="#">Conseils d'entretiens</a>
-                                        <a class="subCategory" href="{{path('contact')}}">Contactez-nous</a>
-                                </div>
-                            </div>
+                                <a class="navtitle-logo" href="{{path('accueil')}}">ATELIER PAULINE</a>
+                                {# <img class="logo" src="C:\Users\cosmo\Documents\Pauline\gitPauline\atelierPaulineRousseau\photo\Pauline.png" width="20%"> #}
                             </li>
-
-                            <li class="nav-item">
-                                <a class="navtitle" href="#">PANIER</a>
-                            </li>
-
-                        {# CONNEXION DECONNEXION CREER SON COMPTE #}
-                            <li class="nav-item">
-                            {% if app.user %}
-                                <a class="navtitle" href="{{path('app_logout')}}">Déconnexion {{app.user.firstname}} {{app.user.lastname}}</a>
-                            </li>
-                            {% else %}
-                                <a class="navtitle" href="{{path('app_login')}}">Connexion</a>
-                                <a class="navtitle" href="{{path('app_register')}}">Créer son compte</a> 
-                                {# app_register provient du controller registrationController (route)
-                                   app_login provient du controller securityController (route) 
-                                   app_logout provient du controller securityController(route)#}
-                            {% endif %}
                             
-                            {# LISTE DEROULANTE CRUD#}
-                            {% if is_granted('ROLE_ADMIN') %}
-                                <li class="nav-item">
-                                    <div class="dropdown">
-                                        <span class="dropbtn">REGLAGES</span> 
-                                        <div class="dropdown-content">
-                                            <a class="navtitle" href="{{path('cate')}}">CATEGORIES</a>
-                                            <a class="navtitle" href="{{ path('subCategory') }}">SOUS CATEGORIES</a>
-                                            <a class="navtitle" href="{{path('prod')}}">PRODUITS</a>
-                                            <a class="navtitle" href="{{path('app_user_index')}}">UTILISATEURS</a>
-                                        </div>
-                                    </div>
-                                </li>   
-                            {% endif %}
                             
-                        </ul>
+                    <div class="rigth">
+                                                <li class="nav-item">
+                                                    <div class="dropdown">
+                                                        <a class="navtitle" href="#">AIDE</a>
+                                                        <div class="dropdown-content">
+                                                                <a class="subCategory" href="#">FAQ</a>
+                                                                <a class="subCategory" href="#">Conseils d'entretiens</a>
+                                                                <a class="subCategory" href="{{path('contact')}}">Contactez-nous</a>
+                                                        </div>
+                                                    </div>
+                                                </li>
+
+                                                <li class="nav-item">
+                                                    {# <a class="navtitle" href="#">PANIER</a> #}
+                                                    <a class="navtitle" href="#"><img class="logo" src=" https://bit.ly/3vY3d9K"> </a>
+
+                                                </li>
+
+                                            {# CONNEXION DECONNEXION CREER SON COMPTE #}
+                                                <li class="nav-item">
+                                                {% if app.user %}
+                                                    <a class="navtitle" href={{path('app_logout')}}>Déconnexion {{app.user.firstname}} {{app.user.lastname}}</a>
+                                                </li>
+                                                {% else %}
+                                                    {# <a class="navtitle" href={{path('app_login')}}>CONNEXION </a> #}
+                                                    <a class="navtitle" href={{path('app_login')}}><img class="logo" src="https://bit.ly/3vW9Xop"> </a>
+                                                    {# <a class="navtitle" href={{path('app_register')}}>Créer son compte</a>  #}
+                                                    {# app_register provient du controller registrationController (route)
+                                                    app_login provient du controller securityController (route) 
+                                                    app_logout provient du controller securityController(route)#}
+                                                {% endif %}
+                                                
+                                                {# LISTE DEROULANTE CRUD#}
+                                                {% if is_granted('ROLE_ADMIN') %}
+                                                    <li class="nav-item">
+                                                        <div class="dropdown">
+                                                            <span class="dropbtn">REGLAGES</span> 
+                                                            <div class="dropdown-content">
+                                                                <a class="subCategory" href="{{path('cate')}}">CATEGORIES</a>
+                                                                <a class="subCategory" href="{{ path('subCategory') }}">SOUS CATEGORIES</a>
+                                                                <a class="subCategory" href="{{path('prod')}}">PRODUITS</a>
+                                                                <a class="subCategory" href="{{path('app_user_index')}}">UTILISATEURS</a>
+                                                            </div>
+                                                        </div>
+                                                    </li>   
+                                                {% endif %}
+                            </div>    
+                        {# </ul> #}
                     </div>
                 </div>
             </nav>    

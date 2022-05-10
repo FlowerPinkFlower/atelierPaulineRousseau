@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Form\ProdType;
 use App\Entity\Product;
+use App\Entity\Category;
 use App\Repository\ProductRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -25,6 +26,20 @@ class ProductController extends AbstractController
         ]);
     }
 
+    //AFFICHAGE SOUS CATEGORIE SHOP
+    /**
+     * @Route("/product/{id}", name="show_categorie")
+     */
+    // public function ShowCategorie(Product $product): Response
+    // {
+    //     return $this->render('category/show.html.twig', [
+    //         'products' => $product,
+    //     ]);
+    // }
+
+
+
+
     //AFFICHAGE COLLIERS ONGLET SOUS CATEGORIE SHOP
     /**
      * @Route("/product/allnecklaces", name="all_necklaces")
@@ -34,6 +49,18 @@ class ProductController extends AbstractController
         $products=$prodRepo->findBy(['subCategory'=>'1']);
         return $this->render('product/indexAllNecklace.html.twig', [
             'necklace' => $products,
+        ]);
+    }
+
+        
+    //AFFICHAGE COLLIERS ONGLET PRODUITS SHOP
+    /**
+     * @Route("/product/allnecklaces/necklace/{id}", name="necklace", methods={"GET"})
+     */
+    public function showNeacklaces(Product $product): Response
+    {
+        return $this->render('product/showNeacklaces.html.twig', [
+            'necklace' => $product,
         ]);
     }
 
@@ -64,18 +91,19 @@ class ProductController extends AbstractController
     }
 
         
-    //AFFICHAGE BRACELETS ONGLET PRODUITS SHOP
+    //AFFICHAGE BOUCLE D'OREILLES ONGLET PRODUITS SHOP
     /**
-     * @Route("/product/allearings/earing", name="earing")
+     * @Route("/product/allearings/earing/{id}", name="earing", methods={"GET"})
      */
-    // public function showEaring(ProductRepository $prodRepo): Response
-    // {
-    //     $products=$subCateRepo->findBy(['product'=>'1']);
-    //     return $this->render('product/indexEaring.html.twig', [
-    //         'earing' => $products,
-    //     ]);
-    // }
+    public function showEaring(Product $product): Response
+    {
 
+        return $this->render('product/showEaring.html.twig', [
+            'earing' => $product,
+        ]);
+    }
+
+    
     //CREER MODIFIER PRODUIT
     /**
      * @Route("/product/new", name="new_prod")

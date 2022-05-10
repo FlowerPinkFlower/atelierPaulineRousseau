@@ -28,7 +28,7 @@ class AppFixtures extends Fixture
                 $subCate= new SubCategory();
                 $subCate->setName($faker->word());
                 $subCate->setDescription($faker->realText($maxNbChars=100, $indexSize=2));
-                $subCate->setCategory($cat);
+                // $subCate->setCategory($cat);
                 $manager->persist($subCate);
 
                 
@@ -38,12 +38,12 @@ class AppFixtures extends Fixture
                     $prod->setName($faker->word());
                     $prod->setQuantity($faker->randomNumber(2, true));
                     $prod->setunitPrice($faker->randomFloat(2, 1,35)); //deux chiffres après la virgule dont le prix doit varier entre 1 et 35€
-                    $prod -> setSubCategory($subCate); //création de la relation entre la table article et categorie
+                    $prod->setSubCategory($subCate); //création de la relation entre la table article et categorie
                     $manager->persist($prod);
                 }
+                
             }
             $manager->flush(); //va être l'étape qui va envoyer les info en BDD. C'est dc la méthode ç ne pas oublier d'appeler après tte manipulation d'entité.
         }
-
     }
 }
