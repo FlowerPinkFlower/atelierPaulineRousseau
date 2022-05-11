@@ -8,9 +8,13 @@
         {{ form_row(formProd.name, {'label': 'Nom' , 'attr' : {placeholder:"Entrer le nom"} }) }}
         {{ form_row(formProd.quantity, {'label': 'Quantité', 'attr' : {placeholder:"Entrer la quantité"} } ) }}
         {{ form_row(formProd.unitPrice, {'label': 'Prix Unitaire', 'attr' : {placeholder:"Entrer le prix unitaire"} } ) }}
-        {{ form_row(formProd.description, {'label': 'Description', 'attr' : {placeholder:"Entrer la description"} } ) }}
+        {# {{ form_row(formProd.description, {'label': 'Description', 'attr' : {placeholder:"Entrer la description"} } ) }}
+
+        {{ form_row(formProd.DescriptionProduit, {'label': 'Message1', 'attr' : {placeholder:"Entrer message"} } ) }} #}
+
         {{ form_row(formProd.category, {'label': 'Categorie', 'attr' : {placeholder:"Entrer la catégorie"} } ) }}
         {{ form_row(formProd.subCategory, {'label': 'Sous Categorie', 'attr' : {placeholder:"Entrer la sous catégorie"} } ) }}
+        {# {{ form_row(formProd.descriptions, {'label': 'Description', 'attr' : {placeholder:"Entrer la description du produit"} } ) }} #}
 
 
     {% if mode %}

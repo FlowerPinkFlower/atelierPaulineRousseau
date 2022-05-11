@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Product;
 use App\Entity\Category;
 use App\Entity\SubCategory;
+use App\Form\DescriptionType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -19,6 +20,9 @@ class ProdType extends AbstractType
             ->add('quantity')
             ->add('unitPrice')
             ->add('description')
+            
+            ->add('DescriptionProduit')
+                
             ->add('category', EntityType::class,[
                 'class'=>Category::class,
                 'choice_label'=> 'name'
@@ -29,6 +33,7 @@ class ProdType extends AbstractType
                 'class'=>SubCategory::class,
                 'choice_label'=> 'name'
                 ])
+            ->add('descriptions')
         ;
     }
 

@@ -30,7 +30,9 @@
                                 label: "J'accepte les conditions"
                             }) }}
 
-                            <button type="submit" class="btn btn-primary">S'enregistrer</button>
+                            {# <button type="submit" class="btn btn-primary">S'enregistrer</button> #}
+                            <br/><a class="btn btn-primary" href="{{path('accueil')}}">S'enregistrer</a>
+
                         {{ form_end(registrationForm) }}
                 </form>
             </div>

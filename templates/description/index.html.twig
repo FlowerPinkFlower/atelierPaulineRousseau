@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Description{% endblock %}
+
+{% block body %}
+    <h1>Description</h1>
+
+<a class="btn btn-warning" href="{{path('new_description')}}">Créer une description</a>
+    <div class="container">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th class="text-center" scope="col">produit</th>
+                    <th class="text-center" scope="col">material</th>
+                    <th class="text-center" scope="col">diameter</th>
+                    <th class="text-center" scope="col">weight</th>
+                    <th class="text-center" scope="col">gilding</th>
+                    <th class="text-center" scope="col">chainLength</th>
+                </tr>
+            </thead>
+            <tbody>
+                    {% for descrip in descriptions %}
+                        <tr>
+                            <td class="text-center" scope="col">{{descrip.produit}}</td>
+                            <td class="text-center" scope="col">{{descrip.material}}</td>
+                            <td class="text-center" scope="col">{{descrip.diameter}}</td>
+                            <td class="text-center" scope="col">{{descrip.weight}}</td>
+                            <td class="text-center" scope="col">{{descrip.gilding}}</td>
+                            <td class="text-center" scope="col">{{descrip.chainLength}}</td>
+                            </td>
+                            <td>
+                                <a class="btn btn-info" href="{{path('update_description', {'id':descrip.id} )}}">Modifier</a>
+                                <a class="btn btn-info" href="{{path('delete_description', {'id':descrip.id} ) }}">Supprimer</a>
+                        </tr>
+                    {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}

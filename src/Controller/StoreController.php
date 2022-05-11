@@ -20,7 +20,7 @@ class StoreController extends AbstractController
      */
     public function index(): Response
     {
-        return $this->render('store/accueil.html.twig');
+        return $this->render('store/index.html.twig');
     }
 
     /**

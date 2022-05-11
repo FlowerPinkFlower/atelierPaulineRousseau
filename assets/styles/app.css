@@ -22,8 +22,6 @@ body{
   justify-content:flex-end;
 }
 
-
-
 .navbar{
   background-color: #fadadd;
   display:flex;
@@ -31,13 +29,13 @@ body{
   align-items: center;
   text-decoration: none;
   list-style: none;
-  font-size:20px;
+  /* font-size:10px; */
   /* padding: 30px 10%; */
 }
 
 .navtitle{
   color:white;
-  font-size:20px;
+  font-size:16px;
 }
 
 .navtitle:hover{
@@ -105,13 +103,11 @@ text-decoration: none;
 }
 
 
-
-
 /* CSS des sous catégorie SHOP */
 .subCategory{
 font-weight:normal;
 position: relative;
-font-size:15px;
+font-size:13px;
 }
 /* CSS du hover de la ligne bleu canard */
 .subCategory::before {
@@ -431,8 +427,9 @@ font-size:15px;
 }
 
 
-
-/* SAVOIR FAIRE */
+/*===============================*/
+/*========SAVOIR FAIRE===========*/
+/*===============================*/
 
 
 .header_savoirfaire{
@@ -449,7 +446,6 @@ section .savoirfaire{
   margin:10px;
   transition: 1s;
   border-radius: 10px;
-  
 
 }
 
@@ -466,36 +462,46 @@ section .savoirfaire:hover{
 
 
 
+/*================*/
+/*=====FOOTER=====*/
+/*================*/
+.footer {
+  background-color: #fadadd;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  padding: 30px;
+}
+
+
+a .socialmedia{
+  width: 30px;
+  height: 30px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+
 @media (max-width:991px){
-section .container{
-    max-width: 400Px;
+  section .container{
+      max-width: 400Px;
+  }
+  section .container .imgBx{
+      display:none;
+  }
+  section .container .user .formBx{
+      width:100%;
+  }
+  section .container.active .signinBx .formBx{
+      top:-100%;
+  }
 }
-section .container .imgBx{
-    display:none;
-}
-section .container .user .formBx{
-    width:100%;
-}
-section .container.active .signinBx .formBx{
-    top:-100%;
-}
-}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+/*==================================*/
 /* ====== TEST FICHE PRODUITS ======*/
+/*==================================*/
 
 .car-wrapper{
 max-width: 800px;

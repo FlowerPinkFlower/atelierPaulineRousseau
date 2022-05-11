@@ -48,7 +48,7 @@ class ProductController extends AbstractController
     {
         $products=$prodRepo->findBy(['subCategory'=>'1']);
         return $this->render('product/indexAllNecklace.html.twig', [
-            'necklace' => $products,
+            'necklace' => $products
         ]);
     }
 
@@ -60,7 +60,7 @@ class ProductController extends AbstractController
     public function showNeacklaces(Product $product): Response
     {
         return $this->render('product/showNeacklaces.html.twig', [
-            'necklace' => $product,
+            'necklace' => $product
         ]);
     }
 
@@ -112,7 +112,7 @@ class ProductController extends AbstractController
     public function addOrUpdateProduct(Product $product=NULL, Request $request, EntityManagerInterface $em){
         if(!$product){
 
-            $product=new Product;
+            $product=new Product();
         }
 
         $formProd=$this->createForm(ProdType::class, $product); //création du formulaire
