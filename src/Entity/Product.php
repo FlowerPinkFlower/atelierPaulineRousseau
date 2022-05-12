@@ -12,14 +12,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Product
 {
-
-
-    
-    public function __toString()
-    {
-        return $this->name;
-    }
-
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -48,29 +40,39 @@ class Product
     private $category;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $description;
-
-    /**
      * @ORM\ManyToOne(targetEntity=SubCategory::class, inversedBy="product")
      */
     private $subCategory;
 
     /**
-     * @ORM\Column(type="text", nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $DescriptionProduit;
+    private $material;
 
     /**
-     * @ORM\OneToMany(targetEntity=Description::class, mappedBy="produit")
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $descriptions;
+    private $diameter;
 
-    public function __construct()
-    {
-        $this->descriptions = new ArrayCollection();
-    }
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $weight;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $gilding;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $chainLength;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $description;
 
     public function getId(): ?int
     {
@@ -125,18 +127,6 @@ class Product
         return $this;
     }
 
-    public function getDescription(): ?string
-    {
-        return $this->description;
-    }
-
-    public function setDescription(string $description): self
-    {
-        $this->description = $description;
-
-        return $this;
-    }
-
     public function getSubCategory(): ?SubCategory
     {
         return $this->subCategory;
@@ -149,44 +139,74 @@ class Product
         return $this;
     }
 
-    public function getDescriptionProduit(): ?string
+    public function getMaterial(): ?string
     {
-        return $this->DescriptionProduit;
+        return $this->material;
     }
 
-    public function setDescriptionProduit(?string $DescriptionProduit): self
+    public function setMaterial(?string $material): self
     {
-        $this->DescriptionProduit = $DescriptionProduit;
+        $this->material = $material;
 
         return $this;
     }
 
-    /**
-     * @return Collection<int, Description>
-     */
-    public function getDescriptions(): Collection
+    public function getDiameter(): ?string
     {
-        return $this->descriptions;
+        return $this->diameter;
     }
 
-    public function addDescription(Description $description): self
+    public function setDiameter(?string $diameter): self
     {
-        if (!$this->descriptions->contains($description)) {
-            $this->descriptions[] = $description;
-            $description->setProduit($this);
-        }
+        $this->diameter = $diameter;
 
         return $this;
     }
 
-    public function removeDescription(Description $description): self
+    public function getWeight(): ?string
     {
-        if ($this->descriptions->removeElement($description)) {
-            // set the owning side to null (unless already changed)
-            if ($description->getProduit() === $this) {
-                $description->setProduit(null);
-            }
-        }
+        return $this->weight;
+    }
+
+    public function setWeight(?string $weight): self
+    {
+        $this->weight = $weight;
+
+        return $this;
+    }
+
+    public function getGilding(): ?string
+    {
+        return $this->gilding;
+    }
+
+    public function setGilding(?string $gilding): self
+    {
+        $this->gilding = $gilding;
+
+        return $this;
+    }
+
+    public function getChainLength(): ?string
+    {
+        return $this->chainLength;
+    }
+
+    public function setChainLength(?string $chainLength): self
+    {
+        $this->chainLength = $chainLength;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(?string $description): self
+    {
+        $this->description = $description;
 
         return $this;
     }

@@ -4,7 +4,7 @@
 {% block title %}COLLIERS{% endblock %}
 
 {% block body %}
-<h1>{{necklace.name}}</h1>
+{# <h1>{{necklace.name}}</h1> #}
 {# 
     <div class="container">
         <table class="table table-hover">
@@ -81,7 +81,15 @@
                 <ul>
                     <li>Article fait main</li>
                     <li>{{necklace.description}}</li>
-                    <li>{{necklace.DescriptionProduit}}</li>
+                </ul>
+                <h2>Détail</h2>
+                {# <p>Boucles d'oreilles marbré</p> #}
+                <ul>
+                    <li>Matériaux: {{necklace.material}}</li>
+                    <li>Diamètre: {{necklace.diameter}}</li>
+                    <li>Poids: {{necklace.weight}}</li>
+                    <li>Dorure: {{necklace.gilding}}</li>
+                    <li>Longueur de la chaine: {{necklace.chainLength}}</li>
                 </ul>
             </div>
 

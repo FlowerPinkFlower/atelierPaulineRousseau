@@ -46,7 +46,7 @@ class ProductController extends AbstractController
      */
     public function showAllNecklace(ProductRepository $prodRepo): Response
     {
-        $products=$prodRepo->findBy(['subCategory'=>'1']);
+        $products=$prodRepo->findBy(['subCategory'=>'4']);
         return $this->render('product/indexAllNecklace.html.twig', [
             'necklace' => $products
         ]);
@@ -71,11 +71,22 @@ class ProductController extends AbstractController
      */
     public function showAllBracelets(ProductRepository $prodRepo): Response
     {
-        $products=$prodRepo->findBy(['subCategory'=>'5']);
+        $products=$prodRepo->findBy(['subCategory'=>'6']);
         return $this->render('product/indexAllBracelets.html.twig', [
             'bracelet' => $products,
         ]);
     }
+
+    /**
+     * @Route("/product/allbracelets/bracelet/{id}", name="bracelet", methods={"GET"})
+     */
+    public function showBracelet(Product $product): Response
+    {
+        return $this->render('product/showBracelet.html.twig', [
+            'bracelet' => $product,
+        ]);
+    }
+
 
 
     //AFFICHAGE BOUCLES D'OREILLES ONGLET SOUS CATEGORIE SHOP
@@ -84,7 +95,7 @@ class ProductController extends AbstractController
      */
     public function showAllEarings(ProductRepository $prodRepo): Response
     {
-        $products=$prodRepo->findBy(['subCategory'=>'3']);
+        $products=$prodRepo->findBy(['subCategory'=>'5']);
         return $this->render('product/indexAllEarings.html.twig', [
             'earing' => $products,
         ]);
@@ -97,7 +108,6 @@ class ProductController extends AbstractController
      */
     public function showEaring(Product $product): Response
     {
-
         return $this->render('product/showEaring.html.twig', [
             'earing' => $product,
         ]);
