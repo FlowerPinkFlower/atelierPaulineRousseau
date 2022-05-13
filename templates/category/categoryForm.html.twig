@@ -7,6 +7,7 @@
     {{ form_start(formCate) }}
         {{ form_row(formCate.name, {"label":"Nom",'attr': {placeholder:"Entrer le nom de la catégorie"} }) }}
         {{ form_row(formCate.description, {"label":"Description",'attr': {placeholder:"Entrer la description de la catégorie"} }) }}
+        {# {{ form_row(formCate.subCategory, {"label":"Sous Categorie",'attr': {placeholder:"Entrer la description de la catégorie"} }) }} #}
     
     {% if mode %}
         <button type="submit" class="btn btn-success">Modifier la catégorie</button>

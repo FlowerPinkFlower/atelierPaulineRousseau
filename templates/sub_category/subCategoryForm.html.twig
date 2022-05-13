@@ -8,7 +8,10 @@
     {{ form_start(formsubCate) }}
 
         {{ form_row(formsubCate.name, {'label':"Nom", 'attr': {placeholder:"Entrer le nom de la sous catégorie"} } ) }}
+        {{ form_row(formsubCate.category, {'label':"Categorie", 'attr': {placeholder:"Entrer la categorie"} }) }}
         {{ form_row(formsubCate.description, {'label':"Description", 'attr': {placeholder:"Entrer la description de la sous catégorie"} }) }}
+
+        {# <td class="text-center" scope="col">{{subCategory.category}}</td> #}
 
         {% if mode %}
             <button type="submit" class="btn btn-success"> Modifier une sous catégorie</button>  

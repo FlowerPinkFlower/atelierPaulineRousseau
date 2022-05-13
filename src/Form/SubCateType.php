@@ -2,9 +2,11 @@
 
 namespace App\Form;
 
+use App\Entity\Category;
 use App\Entity\SubCategory;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class SubCateType extends AbstractType
@@ -13,8 +15,13 @@ class SubCateType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('description')
-        ;
+            ->add('category', EntityType::class,[
+                'class'=>Category::class,
+                'choice_label'=> 'name'
+
+                ])
+                ->add('description')
+            ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void

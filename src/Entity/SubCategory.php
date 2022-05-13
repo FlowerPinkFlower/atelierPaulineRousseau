@@ -2,10 +2,12 @@
 
 namespace App\Entity;
 
-use App\Repository\SubCategoryRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use App\Entity\Product;
+use App\Entity\Category;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\SubCategoryRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity(repositoryClass=SubCategoryRepository::class)

@@ -4,13 +4,20 @@
 {% block title %}BOUCLES D'OREILLES{% endblock %}
 
 {% block body %}
+
+
+{# 
+<pre>
+    {{ dump(earing) }}
+</pre> #}
+
 <h1>BOUCLES D'OREILLES</h1>
 
     <div class="container">
        <section class="product-list">
                     {% for bou in earing %}
                     <div class="card">
-                        <div class="image"> <img src="https://i.etsystatic.com/34806363/r/il/9008d3/3879418349/il_1588xN.3879418349_omhf.jpg" alt="boucle d'oreille"> </div>
+                        <div class="image"> <img src="#" alt="boucle d'oreille"> </div>
                         <div class="title">{{bou.name}}</div>
                         <div class="text">{{bou.unitprice}}</div>
                         <a class="buy-now" href="#">Ajouter au panier</a>

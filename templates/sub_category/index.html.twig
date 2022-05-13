@@ -19,6 +19,7 @@
                     {% for subCategory in subCate %}
                         <tr>
                             <td class="text-center" scope="col">{{subCategory.name}}</td>
+                            {# <td class="text-center" scope="col">{{subCategory.category}}</td> #}
                             <td class="text-center" scope="col">{{subCategory.description}}</td>
                             <td>
                                 <a href="{{path('delete_SubCate', {'id': subCategory.id})}}" class="btn btn-warning">Supprimer</a>
