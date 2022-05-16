@@ -215,6 +215,11 @@ margin:10px;
 /*ACCUEIL*/
 /**********/
 
+.image{
+  display:flex;
+  justify-content:center;
+}
+
 .header{
 min-height:80vh;
 width:100%;
