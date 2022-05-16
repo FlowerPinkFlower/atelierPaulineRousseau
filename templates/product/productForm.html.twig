@@ -1,33 +1,39 @@
 {% extends "base.html.twig" %}
-
 {% block title %}Produits{% endblock %}
-
 {% block body %}
-
     {{ form_start(formProd) }}
         {{ form_row(formProd.name, {'label': 'Nom' , 'attr' : {placeholder:"Entrer le nom"} }) }}
         {{ form_row(formProd.quantity, {'label': 'Quantité', 'attr' : {placeholder:"Entrer la quantité"} } ) }}
         {{ form_row(formProd.unitPrice, {'label': 'Prix Unitaire', 'attr' : {placeholder:"Entrer le prix unitaire"} } ) }}
         {{ form_row(formProd.description, {'label': 'Description', 'attr' : {placeholder:"Entrer la description"} } ) }}
-
         {{ form_row(formProd.material, {'label': 'Matériaux', 'attr' : {placeholder:"Entrer le matériaux"} } ) }}
         {{ form_row(formProd.diameter, {'label': 'Diamètre', 'attr' : {placeholder:"Entrer le diamètre"} } ) }}
         {{ form_row(formProd.weight, {'label': 'Poids', 'attr' : {placeholder:"Entrer le poids"} } ) }}
         {{ form_row(formProd.gilding, {'label': 'Dorure', 'attr' : {placeholder:"Entrer la dorure"} } ) }}
-        {{ form_row(formProd.chainLength, {'label': 'longueur de la chaine', 'attr' : {placeholder:"Entrer la mongueur de la chaine"} } ) }}       
-
+        {{ form_row(formProd.chainLength, {'label': 'longueur de la chaine', 'attr' : {placeholder:"Entrer la mongueur de la chaine"} } ) }}
+        {{ form_row(formProd.picture, {'label': 'Photos', 'attr' : {placeholder:"Entrer les photos"} } ) }}
+       
+        <h2>Images</h2>
+        {# {% if app.request.attributes.get('_route') == 'update_prod' %} #}
+        {% if product.pictures %}
+            {# {% for picture in picture.images %} #}
+            {% for picture in product.pictures %}
+                <div>
+                    <img src="{{ asset('/uploads/' ~ picture.name) }}" alt="image" width="10">
+                    <a href="{{ path('delete_img', {id: picture.id}) }}" data-delete data-token="{{ csrf_token('delete' ~ picture.id) }}">Supprimer</a>
+                </div>
+            {% endfor %}
+        {% endif %}
+        
+    
         {{ form_row(formProd.category, {'label': 'Categorie', 'attr' : {placeholder:"Entrer la catégorie"} } ) }}
         {{ form_row(formProd.subCategory, {'label': 'Sous Categorie', 'attr' : {placeholder:"Entrer la sous catégorie"} } ) }}
-
 
     {% if mode %}
         <button type="submit" class="btn btn-success">Modifier le produit</button>
     {% else %}
         <button type="submit" class="btn btn-success">Créer le produit</button>
     {% endif %}
-
     {{ form_end(formProd) }}
-
     <a href="{{path('prod')}}" type="submit" class="btn btn-primary">Retour</a>
-
 {% endblock %}

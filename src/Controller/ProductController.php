@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Form\ProdType;
+use App\Entity\Picture;
 use App\Entity\Product;
 use App\Entity\Category;
 use App\Repository\ProductRepository;
@@ -96,7 +97,8 @@ class ProductController extends AbstractController
      */
     public function showAllEarings(ProductRepository $prodRepo): Response
     {
-        $products=$prodRepo->findBy(['subCategory'=>'5']);
+        // $products=$prodRepo->findBy(['subCategory'=>'2']);
+        $products=$prodRepo->findAll();
         return $this->render('product/indexAllEarings.html.twig', [
             'earing' => $products,
         ]);
@@ -113,33 +115,49 @@ class ProductController extends AbstractController
             'earing' => $product,
         ]);
     }
-
     
-    //CREER MODIFIER PRODUIT
+    //CREER MODIFIER PRODUIT AJOUT IMAGE
     /**
      * @Route("/product/new", name="new_prod")
      * @Route("/product/update/{id}", name="update_prod")
      */
     public function addOrUpdateProduct(Product $product=NULL, Request $request, EntityManagerInterface $em){
         if(!$product){
-
             $product=new Product();
         }
-
         $formProd=$this->createForm(ProdType::class, $product); //création du formulaire
         $formProd->handleRequest($request);
         
         if ($formProd->isSubmitted() && $formProd->isValid()) { 
+            //On récupère les images transmises
+            $images=$formProd->get('picture')->getData();
+            //On boucle sur les images
+            foreach($images as $image){
+                //On génère un nouveau nom de fichier
+                $fichier = md5(uniqid()). '.'.$image->guessExtension();
+                //On copie le fichier dans le dossier uploads
+                $image->move(
+                    $this->getParameter('images_directory'), $fichier
+                );
+                //on stock image dans la BDD (son nom)
+                //A chaque fois que l'on fait une nouvelle image (si on en met une ou pls)
+                //A chaque fois que l'on va passer dnas le foreach, on va créer une nouvelle instance avec une nouvelle image
+                //On va l'ajouter à produit et une fois qu'il y a le persist de $product il va en cascade faire un persist dans image pour stocker les images
+                $img = new Picture();
+                $img->setName($fichier);
+                $product->addPicture($img);
+            }
+            // $em=$this->getDoctrine()->getEntityManager();
             $em->persist($product);
             $em->flush();
             return $this->redirectToRoute('prod');
         }
         return $this->render('product/productForm.html.twig', [
+            'product'=>$product,
             'formProd'=>$formProd->createView(),
             'mode'=>$product->getId() !==null,
         ]);
     }
-
 
     //SUPPRIMER PRODUIT
     /**
@@ -149,5 +167,28 @@ class ProductController extends AbstractController
         $em->remove($product);
         $em->flush();
         return $this->redirectToRoute('prod');
+    }
+
+    //SUPPRIMER IMAGES
+    /**
+     * @Route("/product/delete/picture/{id}", name="delete_img", methods={"DELETE"})
+     */    
+    public function deletePicture(Picture $pitcures, Request $request){
+        $data = json_decde($request->getContent(), true);
+        
+        //On vérifie que le token est valide
+            if ($this->isCsrfTokenValid('delete'.$pictures->getId(), $data['_token'])) {
+                //On récupère le nom de l'image
+                $nom=$pictures->getName();
+                //On supprime le fichier
+                unlink($this->getParameter('images_directory').'/'.$nom);
+                //On supprime de la BDD
+                $em->remove($pictures);
+                $em->flush();
+                //On répond en Json
+                return new JsonResponse(['success'=>1]);
+            }else{
+                return new JsonResponse(['error'=>'Token invalide'], 400);
+            }
     }
 }

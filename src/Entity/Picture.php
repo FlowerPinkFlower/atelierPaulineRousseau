@@ -2,8 +2,9 @@
 
 namespace App\Entity;
 
-use App\Repository\PictureRepository;
+use App\Entity\Product;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\PictureRepository;
 
 /**
  * @ORM\Entity(repositoryClass=PictureRepository::class)
@@ -56,4 +57,15 @@ class Picture
 
         return $this;
     }
+
+
+    /**
+    * toString
+    * @return string
+    */
+    public function __toString(){
+
+        return $this->product;
+    }
+
 }

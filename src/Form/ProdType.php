@@ -15,7 +15,7 @@ class ProdType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        $builder
+            $builder
             ->add('name')
             ->add('quantity')
             ->add('unitPrice')
@@ -25,12 +25,21 @@ class ProdType extends AbstractType
             ->add('weight')
             ->add('gilding')
             ->add('chainLength')
+            //On ajoute le champs image dans le formulaire
+            //Il n'est pas lié à la BDD car mapped false)
+            ->add('picture', FileType::class, [
+                'label'=>false,
+                'multiple'=>true,
+                'mapped'=>false,
+                'required'=>false
+                ])
+            
                 
             ->add('category', EntityType::class,[
                 'class'=>Category::class,
                 'choice_label'=> 'name'
-//Quand il y many to one il faut faire entity type et category. Je demande à une table qu'elle me donne des chaines de caractères, elle ne donc comprend pas.
-//ca rentre en conflit donc il faut faire un entitytype et categorie class
+    //Quand il y many to one il faut faire entity type et category. Je demande à une table qu'elle me donne des chaines de caractères, elle ne donc comprend pas.
+    //ca rentre en conflit donc il faut faire un entitytype et categorie class
                 ])
             ->add('subCategory', EntityType::class,[
                 'class'=>SubCategory::class,
@@ -38,9 +47,7 @@ class ProdType extends AbstractType
                 ])
         ;
     }
-
-    public function configureOptions(OptionsResolver $resolver): void
-    {
+    public function configureOptions(OptionsResolver $resolver): void{
         $resolver->setDefaults([
             'data_class' => Product::class,
         ]);

@@ -79,7 +79,7 @@ class Product
     private $description;
 
     /**
-     * @ORM\OneToMany(targetEntity=Picture::class, mappedBy="product", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity=Picture::class, mappedBy="product", orphanRemoval=true, cascade={"persist"})
      */
     private $pictures;
 
@@ -253,6 +253,15 @@ class Product
         }
 
         return $this;
+    }
+
+     /**
+    * toString
+    * @return string
+    */
+    public function __toString(){
+
+        return $this->name;
     }
 
 }
