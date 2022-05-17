@@ -191,4 +191,25 @@ class ProductController extends AbstractController
                 return new JsonResponse(['error'=>'Token invalide'], 400);
             }
     }
+
+
+
+
+
+
+
+
+
+
+
+    /**
+     * @Route("/testproduit", name="testproduit")
+     */
+    public function testproduit(): Response
+    {
+        return $this->render('product/testproduit.html.twig');
+    }
+
+
+
 }

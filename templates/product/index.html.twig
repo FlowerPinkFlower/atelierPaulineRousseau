@@ -11,7 +11,7 @@
             <thead>
                 <tr>
                     <th class="text-center" scope="col">Nom</th>
-                    <th class="text-center" scope="col">Description</th>
+                    {# <th class="text-center" scope="col">Description</th> #}
                     <th class="text-center" scope="col">Quantité</th>
                     <th class="text-center" scope="col">Prix unitaire</th>
                 </tr>
@@ -20,7 +20,7 @@
                     {% for prod in products %}
                         <tr>
                             <td class="text-center" scope="col">{{prod.name}}</td>
-                            <td class="text-center" scope="col">{{prod.description}}</td>
+                            {# <td class="text-center" scope="col">{{prod.description}}</td> #}
                             <td class="text-center" scope="col">{{prod.quantity}}</td>
                             <td class="text-center" scope="col">{{prod.unitPrice}}</td>
                             </td>

@@ -4,10 +4,12 @@
 {% block title %}BOUCLES D'OREILLES{% endblock %}
 
 {% block body %}
-
-
-
-<h1>BOUCLES D'OREILLES</h1>
+<section class="header_product">
+        <div class="text-box">
+            <h1>BOUCLE D'OREILLES</h1></br>
+            <a href="#" class="hero-btn">Venez découvrir notre marque</a>
+        </div>
+    </section>
 
     <div class="container">
        <section class="product-list">
@@ -22,8 +24,8 @@
                         {% endfor %}
 
                         <div class="title">{{bou.name}}</div>
-                        <div class="text">{{bou.unitprice}}</div>
-                        <a class="buy-now" href="#">Ajouter au panier</a>
+                        <div class="text">{{bou.unitprice}}€</div>
+                        {# <a class="buy-now" href="#">Ajouter au panier</a> #}
                         <a class="buy-now" href="{{path('earing', {'id': bou.id} )}}">Voir produit</a>
                     </div>
 
