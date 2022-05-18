@@ -4,21 +4,50 @@
 {% block title %}BRACELETS{% endblock %}
 
 {% block body %}
-<h1>BRACELETS</h1>
+<section class="header_product">
+        <div class="text-box">
+            <h1>BRACELETS</h1></br>
+            <a href="#" class="hero-btn">Venez découvrir notre marque</a>
+        </div>
+</section>
 
     <div class="container">
        <section class="product-list">
                     {% for brac in bracelet %}
                     <div class="card">
-                        <div class="image"> <img src="https://i.etsystatic.com/34806363/r/il/9008d3/3879418349/il_1588xN.3879418349_omhf.jpg" alt="boucle d'oreille"> </div>
+
+                        {% for image in brac.pictures %}
+                            {# <pre>
+                                {{ dump(image.name) }}
+                            </pre> #}
+                            <div class="image"> <img src="{{ asset('/uploads/' ~ image.name ) }}" alt="bracelet"> </div> 
+                        {% endfor %}
+
                         <div class="title">{{brac.name}}</div>
-                        <div class="text">{{brac.unitprice}}</div>
-                        <a class="buy-now" href="#">Ajouter au panier</a>
+                        <div class="text">{{brac.unitprice}}€</div>
+                        {# <a class="buy-now" href="#">Ajouter au panier</a> #}
                         <a class="buy-now" href="{{path('earing', {'id': brac.id} )}}">Voir produit</a>
                     </div>
+
+
                     {% endfor %}
         </section>
+
     </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 {# TEST POUR FAIRE APPARATITRE TOUS LES PRODUITS DANS UNE SEULE FONCITON ET PAGE #}

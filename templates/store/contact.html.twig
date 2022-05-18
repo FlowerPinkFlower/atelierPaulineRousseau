@@ -1,25 +1,34 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Contact{% endblock %}
+{% block title %}Contact
+{% endblock %}
 
 {% block body %}
-<section class="contact">
-    <div class="container">
-            <h1 class="h3 mb-3 font-weight-normal">Nous envoyer un mail</h1>
-            <form method="post">
-                <input type="text" name="name" placeholder="Enter votre nom" required="">
-                <input type="email" name="email" placeholder="Enter votre email" required="">
-                <input type="text" name="subject" placeholder="Enter le sujet" required="">
-                <textarea name="mess" id="mess" cols="50" rows="20" placeholder="Entrez votre message"></textarea>
+	<section class="contact">
+		<div class="container">
+			<h1 class="h3 mb-3 font-weight-normal">Nous envoyer un mail</h1>
+			<form method="post">
+                <select class="list-deroulante" name="list-deroulante" size="1">
+                    <option>-- Choisir un sujet --</option>
+                    <option>Je n'ai pas reçu mon colis</option>
+                    <option>J'ai une question sur le(s) produit(s)</option>
+                    <option>Echange OU Retour du colis</option>
+                    <option>Autres</option>
+                </select>
 
-                <button class="btn btn-primary" type="submit">Envoyer votre message</button>
-                    {# <label for="country">Le sujet</label>
-                    <select id="country" name="country">
-                        <option value="australia">Australia</option>
-                        <option value="canada">Canada</option>
-                        <option value="usa">USA</option>
-                    </select> #}
-            </form>
-    </div>
-</section>
+            <input type="text" name="name" placeholder="Enter votre nom" required="">
+            <input type="email" name="email" placeholder="Enter votre email" required="">
+            <input type="text" name="subject" placeholder="Enter le sujet" required="">
+            <textarea name="mess" id="mess" cols="50" rows="20" placeholder="Entrez votre message"></textarea>
+
+            <button class="buy-now" type="submit">Envoyer votre message</button>
+            {# <label for="country">Le sujet</label>
+				                    <select id="country" name="country">
+				                        <option value="australia">Australia</option>
+				                        <option value="canada">Canada</option>
+				                        <option value="usa">USA</option>
+				                    </select> #}
+			</form>
+		</div>
+	</section>
 {% endblock %}

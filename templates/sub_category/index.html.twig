@@ -6,7 +6,7 @@
 
 <h1>Sous categorie</h1>
 
-<a class="btn btn-success" href="{{path('new_subCate')}}" >Créer</a>
+<a class="buy-now" href="{{path('new_subCate')}}" >Créer</a>
     <div class="container">
         <table class="table table-hover">
             <thead>
@@ -21,10 +21,8 @@
                             <td class="text-center" scope="col">{{subCategory.name}}</td>
                             {# <td class="text-center" scope="col">{{subCategory.category}}</td> #}
                             <td class="text-center" scope="col">{{subCategory.description}}</td>
-                            <td>
-                                <a href="{{path('delete_SubCate', {'id': subCategory.id})}}" class="btn btn-warning">Supprimer</a>
-                                <a href="{{path('update_subCate', {'id': subCategory.id})}}" class="btn btn-warning">Modifier</a>
-                            </td>
+                            <td><a href="{{path('delete_SubCate', {'id': subCategory.id})}}" class="buy-now">Supprimer</a></td>
+                            <td><a href="{{path('update_subCate', {'id': subCategory.id})}}" class="buy-now">Modifier</a></td>
                         </tr>
                     {% endfor %}
             </tbody>

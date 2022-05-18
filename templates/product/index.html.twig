@@ -5,7 +5,8 @@
 {% block body %}
 <h1>Produits</h1>
 
-<a class="btn btn-warning" href="{{path('new_prod')}}">Créer</a>
+
+<a class="buy-now" href="{{path('new_prod')}}">Créer</a>
     <div class="container">
         <table class="table table-hover">
             <thead>
@@ -21,12 +22,12 @@
                         <tr>
                             <td class="text-center" scope="col">{{prod.name}}</td>
                             {# <td class="text-center" scope="col">{{prod.description}}</td> #}
-                            <td class="text-center" scope="col">{{prod.quantity}}</td>
-                            <td class="text-center" scope="col">{{prod.unitPrice}}</td>
-                            </td>
-                            <td>
-                                <a class="btn btn-info" href="{{path('update_prod', {'id':prod.id} )}}">Modifier</a>
-                                <a class="btn btn-info" href="{{path('delete_prod', {'id':prod.id} ) }}">Supprimer</a>
+                            {# <td class="text-center" scope="col">{{prod.quantity}}</td> #}
+                            {# <td class="text-center" scope="col">{{prod.unitPrice}}</td> #}
+                            <td><a class="buy-now" href="{{path('update_prod', {'id':prod.id} )}}">Modifier</a></td>
+                            <td><a class="buy-now" href="{{path('delete_prod', {'id':prod.id} ) }}">Supprimer</a></td>
+                                
+                            
                         </tr>
                     {% endfor %}
             </tbody>

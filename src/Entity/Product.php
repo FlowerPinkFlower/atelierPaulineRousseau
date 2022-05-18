@@ -83,6 +83,31 @@ class Product
      */
     private $pictures;
 
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $descriptiontwo;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $descriptionthree;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $descriptionfour;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $descriptionfive;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $descriptionsix;
+
     public function __construct()
     {
         $this->pictures = new ArrayCollection();
@@ -262,6 +287,66 @@ class Product
     public function __toString(){
 
         return $this->name;
+    }
+
+    public function getDescriptiontwo(): ?string
+    {
+        return $this->descriptiontwo;
+    }
+
+    public function setDescriptiontwo(?string $descriptiontwo): self
+    {
+        $this->descriptiontwo = $descriptiontwo;
+
+        return $this;
+    }
+
+    public function getDescriptionthree(): ?string
+    {
+        return $this->descriptionthree;
+    }
+
+    public function setDescriptionthree(?string $descriptionthree): self
+    {
+        $this->descriptionthree = $descriptionthree;
+
+        return $this;
+    }
+
+    public function getDescriptionfour(): ?string
+    {
+        return $this->descriptionfour;
+    }
+
+    public function setDescriptionfour(?string $descriptionfour): self
+    {
+        $this->descriptionfour = $descriptionfour;
+
+        return $this;
+    }
+
+    public function getDescriptionfive(): ?string
+    {
+        return $this->descriptionfive;
+    }
+
+    public function setDescriptionfive(?string $descriptionfive): self
+    {
+        $this->descriptionfive = $descriptionfive;
+
+        return $this;
+    }
+
+    public function getDescriptionsix(): ?string
+    {
+        return $this->descriptionsix;
+    }
+
+    public function setDescriptionsix(?string $descriptionsix): self
+    {
+        $this->descriptionsix = $descriptionsix;
+
+        return $this;
     }
 
 }

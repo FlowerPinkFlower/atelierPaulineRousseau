@@ -11,7 +11,7 @@
                 {# <th>Id</th> #}
                 <th class="text-center">Email</th>
                 <th class="text-center">Roles</th>
-                <th class="text-center">Mot de passe</th>
+                {# <th class="text-center">Mot de passe</th> #}
                 <th class="text-center">Prénom</th>
                 <th class="text-center">Nom</th>
                 <th class="text-center">actions</th>
@@ -23,14 +23,12 @@
                 {# <td>{{ user.id }}</td> #}
                 <td class="text-center">{{ user.email }}</td>
                 <td class="text-center">{{ user.roles ? user.roles|json_encode : '' }}</td>
-                <td class="text-center">{{ user.password }}</td>
+                {# <td class="text-center">{{ user.password }}</td> #}
                 <td class="text-center">{{ user.firstname }}</td>
                 <td class="text-center">{{ user.lastname }}</td>
-                <td> 
-                    <a class="text-center, btn btn-primary" href="{{ path('app_user_show', {'id': user.id}) }}">Voir</a>
-                    <a class="text-center, btn btn-primary" href="{{ path('app_user_edit', {'id': user.id}) }}">Modifier</a>
-                    <a class="text-center, btn btn-warning" href="{{ path('app_user_delete', {'id': user.id}) }}">Supprimer</a>
-                </td>
+                <td><a class="text-center, buy-now" href="{{ path('app_user_show', {'id': user.id}) }}">Voir</a></td>
+                <td><a class="text-center, buy-now" href="{{ path('app_user_edit', {'id': user.id}) }}">Modifier</a></td>
+                <td><a class="text-center, buy-now" href="{{ path('app_user_delete', {'id': user.id}) }}">Supprimer</a></td>
             </tr>
         {% else %}
             <tr>
@@ -40,5 +38,5 @@
         </tbody>
     </table>
 
-    <a class="btn btn-primary" href="{{ path('app_user_new') }}">Créer un nouveau utilisateur</a>
+    <a class="buy-now" href="{{ path('app_user_new') }}">Créer un nouveau utilisateur</a>
 {% endblock %}

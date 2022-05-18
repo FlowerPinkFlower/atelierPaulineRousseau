@@ -69,4 +69,12 @@ class StoreController extends AbstractController
         return $this->render('store/accueil.html.twig');
     }
 
+    /**
+     * @Route("/conseils", name="conseils")
+     */
+    public function conseils(): Response
+    {
+        return $this->render('store/conseils.html.twig');
+    }
+
 }

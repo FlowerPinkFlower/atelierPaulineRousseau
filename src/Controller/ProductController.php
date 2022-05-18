@@ -48,7 +48,7 @@ class ProductController extends AbstractController
      */
     public function showAllNecklace(ProductRepository $prodRepo): Response
     {
-        $products=$prodRepo->findBy(['subCategory'=>'4']);
+        $products=$prodRepo->findBy(['subCategory'=>'2']);
         return $this->render('product/indexAllNecklace.html.twig', [
             'necklace' => $products
         ]);
@@ -73,7 +73,7 @@ class ProductController extends AbstractController
      */
     public function showAllBracelets(ProductRepository $prodRepo): Response
     {
-        $products=$prodRepo->findBy(['subCategory'=>'6']);
+        $products=$prodRepo->findBy(['subCategory'=>'3']);
         return $this->render('product/indexAllBracelets.html.twig', [
             'bracelet' => $products,
         ]);
@@ -164,12 +164,16 @@ class ProductController extends AbstractController
      * @Route("/product/delete/{id}", name="delete_prod")
      */
     public function deleteProduct(Product $product, EntityManagerInterface $em){
+        if ($image) {
+            
+        }
+
         $em->remove($product);
         $em->flush();
         return $this->redirectToRoute('prod');
     }
 
-    //SUPPRIMER IMAGES
+    //SUPPRIMER IMAGE
     /**
      * @Route("/product/delete/picture/{id}", name="delete_img", methods={"DELETE"})
      */    
@@ -191,25 +195,5 @@ class ProductController extends AbstractController
                 return new JsonResponse(['error'=>'Token invalide'], 400);
             }
     }
-
-
-
-
-
-
-
-
-
-
-
-    /**
-     * @Route("/testproduit", name="testproduit")
-     */
-    public function testproduit(): Response
-    {
-        return $this->render('product/testproduit.html.twig');
-    }
-
-
 
 }

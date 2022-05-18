@@ -77,12 +77,12 @@
                             </li>
                     </div>
 
-
+                    <div class="center">
                             <li class="nav-item">
-                                <a class="navtitle-logo" href="{{path('accueil')}}">ATELIER PAULINE</a>
+                                <a class="navtitle-logo" href="{{path('accueil')}}"><img class="logobarre" src="{{asset('uploads/logo.png')}}" alt="Logo"></a>
                                 {# <img class="logo" src="C:\Users\cosmo\Documents\Pauline\gitPauline\atelierPaulineRousseau\photo\Pauline.png" width="20%"> #}
                             </li>
-                            
+                    </div>        
                             
                     <div class="rigth">
                                                 <li class="nav-item">
@@ -90,7 +90,7 @@
                                                         <a class="navtitle" href="#">AIDE</a>
                                                         <div class="dropdown-content">
                                                                 <a class="subCategory" href="#">FAQ</a>
-                                                                <a class="subCategory" href="#">Conseils d'entretiens</a>
+                                                                <a class="subCategory" href="{{path('conseils')}}">Conseils d'entretiens</a>
                                                                 <a class="subCategory" href="{{path('contact')}}">Contactez-nous</a>
                                                         </div>
                                                     </div>
@@ -106,7 +106,7 @@
                                                 </li>
                                                 {% else %}
                                                     {# <a class="navtitle" href={{path('app_login')}}>CONNEXION </a> #}
-                                                    <a class="navtitle" href={{path('app_login')}}><img class="logo" src="https://bit.ly/3vW9Xop"> </a>
+                                                    <a class="navtitle" href={{path('app_login')}}>COMPTE</a>
                                                     {# <a class="navtitle" href={{path('app_register')}}>Créer son compte</a>  #}
                                                     {# app_register provient du controller registrationController (route)
                                                     app_login provient du controller securityController (route) 
@@ -130,7 +130,7 @@
 
                                                 <li class="nav-item">
                                                     {# <a class="navtitle" href="#">PANIER</a> #}
-                                                    <a class="navtitle" href="#"><img class="logo" src=" https://bit.ly/3vY3d9K"> </a>
+                                                    <a class="navtitle" href="#">SHOPPING</a>
 
                                                 </li>
                             </div>    
@@ -198,24 +198,25 @@
     </script> #}
 
     <!--===== FOOTER =====-->
-    <footer class="footer">
-        <table class="table">
-        <tbody>
-            <tr>
-                <th scope="row"></th>
-                    <td><a href="https://bit.ly/3KX05yV" ><img class="socialmedia" src="https://bit.ly/38d0vEf" alt="Instagram - Atlier Pauline Rousseau"></td>
-                    <td><a  href="https://etsy.me/3M0N74I" ><img class="socialmedia" src="https://bit.ly/3vZvBrX" alt="Etsy - Atlier Pauline Rousseau"></a></td>
-                    <td><img class="logo" src="photo\Pauline.png" alt="Logo"></td>
-            </tr>
-            <tr>
-                <th scope="row"></th>
-                    <td><a href="#">Politique de confidentialité</a></td>
-                    <td><a href="#">Mentions légales</a></td>
-                    <td><p class="footer__copy">&#169; atelier Pauline Rousseau - Camille GUINGUAND</p></td>
-            </tr>
-        </tbody>
-        </table>
+    <footer>
+        <div>
+            <ul class="socials">
+                <li><a href="https://bit.ly/3KX05yV"><img class="facebook" src="{{asset('uploads/instagram.png')}}" alt="Instagram - Atelier Pauline Rousseau"></a></li>
+                <li><a href="https://etsy.me/3FUa86W"><img class="instagram"  src="{{asset('uploads/etsy.png')}}" alt="Etsy - Atlier Pauline Rousseau"></a></li>
+                <li><a href="#"><img class="logofooter" src="{{asset('uploads/logo.png')}}"></img></a></li>
+            </ul>
+
+            <ul class="mentions">
+                <li><a href="#">Politique de confidentialité</a></li>
+                <li><a href="#">Mentions légales</a></li>
+                <li><a class="footer__copy">&#169; atelier Pauline Rousseau</a></li>
+            </ul>
+        </div>
+
+
     </footer>
-    
     </body>
 </html>
+
+
+
