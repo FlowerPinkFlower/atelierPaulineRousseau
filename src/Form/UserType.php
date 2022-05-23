@@ -23,7 +23,8 @@ class UserType extends AbstractType
             ])
             
             ->add('email')
-            ->add('roles')
+            ->add('firstname')
+            ->add('lastname')
             ->add('password')
             
         ;

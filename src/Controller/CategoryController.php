@@ -46,7 +46,6 @@ class CategoryController extends AbstractController
                 return $this->redirectToRoute('cate');
             }
         
-        
             return $this->render('category/categoryForm.html.twig', [
                 'formCate' => $formCate->createView(), //créer la nouvelle catégorie
                 'mode' => $category ->getId() !==null //modifie la catégorie

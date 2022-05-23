@@ -30,16 +30,14 @@ class ProdType extends AbstractType
             ->add('weight')
             ->add('gilding')
             ->add('chainLength')
-            //On ajoute le champs image dans le formulaire
-            //Il n'est pas lié à la BDD car mapped false)
-            ->add('picture', FileType::class, [
-                'label'=>false,
-                'multiple'=>true,
+            ->add('photo', FileType::class, [
                 'mapped'=>false,
                 'required'=>false
                 ])
+
+
+
             
-                
             ->add('category', EntityType::class,[
                 'class'=>Category::class,
                 'choice_label'=> 'name'

@@ -7,6 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
@@ -21,8 +22,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $id;
 
-    /**
+    /** 
      * @ORM\Column(type="string", length=180, unique=true)
+     * 
+     * @Assert\Regex(
+     * pattern="/^[ AZ 0-9 ._%+ - ] + @ [ AZ 0-9 . - ] + \. [ AZ ] {2,3}$/",
+     * match=true a,
+     * message="Votre email est invalide!"
+     * )
      */
     private $email;
 
@@ -34,16 +41,33 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
+     * 
+     * @Assert\Regex(
+     * pattern="/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#&()–[{}]:;',?/*~$^+=<>]).{8,20}$/",
+     * match=false,
+     * message="Votre mot de passe doit contenir au moins 8 caractères, 20 caractères maximum, un caractère spécial"
+     * )
+     * 
      */
     private $password;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Regex(
+     * pattern="/\d/",
+     * match=false,
+     * message="Votre prénom ne peut pas contenir de chiffre!"
+     * )
      */
     private $firstname;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Regex(
+     * pattern="/\d/",
+     * match=false,
+     * message="Votre nom ne peut pas contenir de chiffre!"
+     * )
      */
     private $lastname;
 
