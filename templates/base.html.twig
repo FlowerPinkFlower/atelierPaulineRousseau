@@ -1,222 +1,202 @@
 <!DOCTYPE html>
 <html lang="fr">
-    <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta
+		name="viewport" content="width=device-width, initial-scale=1.0">
 
-{# <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8"> #}
-        <title>{% block title %}🌸Atelier Pauline🌸{% endblock %}</title>
-        {# <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>🌸</text></svg>"> #}
-        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
-               
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.1.3/dist/lux/bootstrap.min.css">
-        
-        {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
-        {% endblock %}
+		{# <!DOCTYPE html>
+		<html>
+		<head>
+		<meta charset="UTF-8"> #}
+		<title>
+			{% block title %}🌸Atelier Pauline🌸{% endblock %}
+		</title>
+		{# <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>🌸</text></svg>"> #}
+		{# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
 
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
-        {% endblock %}
-        </head>
-        <body>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.1.3/dist/lux/bootstrap.min.css">
 
-            <nav class="navbar navbar-expand-lg navbar-dark">
-                <div class="container-fluid">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+		{% block stylesheets %}
+			{{ encore_entry_link_tags('app') }}
+		{% endblock %}
 
-                    
+		{% block javascripts %}
+			{{ encore_entry_script_tags('app') }}
+		{% endblock %}
+	</head>
+	<body>
+		<nav class="navbar navbar-expand-lg navbar-dark">
+			<a class="#" href="{{path('home')}}"><img class="logobarre" src="{{asset('uploads/logo.png')}}" alt="logo"></a>
+			<div class="container-fluid">
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
 
-                    <div class="collapse navbar-collapse" >
-                        <ul class="navbar-nav me-auto">
-                    <div class="left">
+				<div class="collapse navbar-collapse" id="navbarColor01">
+					<ul class="navbar-nav me-auto">
+                         
                             <li class="nav-item">
-                                <a class="navtitle" href="{{path('accueil')}}">ACCUEIL</a>
+                                <a class="navtitle" href="{{path('home')}}">ACCUEIL</a>
                             </li>
 
 
-                        {# Changer la classe navbar-nav me-auto #}
-                        {# LISTE DEROULANTE PRODUITS #}
                             <li class="nav-item">
                                 <div class="dropdown">
-                                    <span class="dropbtn">SHOP</span> 
+                                    <span class="navtitle">SHOP</span>
                                     <div class="dropdown-content">Pierres Naturelles
                                         <a class="subCategory" href="{{path('all_necklaces')}}">Colliers</a>
                                         <a class="subCategory" href="{{path('all_bracelets')}}">Bracelets</a>
                                         <a class="subCategory" href="{{path('all_earings')}}">Boucles d'Oreilles</a>
                                     </div>
-                                
-                                {# {% for cate in product %}
-                                    <li>{{cate}}</li> #}
 
-                                    {# {% for item in items %}
-                                        <a class="subCategory" href="{{path('subCategory')}}"></a>
-                                        
-                                    {% endfor %} #}
-                                     
-                                {# {% endfor %} #}
-                                        
+                                    {# {% for cate in product %}
+                                    <li>{{cate}}</li> #}
+                                {# {% for item in items %}
+                                <a class="subCategory" href="{{path('subCategory')}}"></a>
+                                {% endfor %} #}
+                                    {# {% endfor %} #}
+
+                                    {# </div> #}
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <div class="dropdown">
+                                    <a class="navtitle" href="#">LA MARQUE</a>
+                                    <div class="dropdown-content">
+                                        <a class="subCategory" href="{{path('savoirfaire')}}">Notre savoir-faire</a>
                                     </div>
                                 </div>
                             </li>
 
-                            
-                            <li class="nav-item">
-                            <div class="dropdown">
-                                <a class="navtitle" href="#">LA MARQUE</a>
-                                <div class="dropdown-content">
-                                        <a class="subCategory" href="{{path('savoirfaire')}}">Notre savoir-faire</a>
-                                </div>
-                            </div>
-                            </li>
-                    </div>
+						<li class="nav-item">
+							<a class="navtitle" href="#">AIDE</a>
+						</li>
 
-                    <div class="center">
-                            <li class="nav-item">
-                                <a class="navtitle-logo" href="{{path('accueil')}}"><img class="logobarre" src="{{asset('uploads/logo.png')}}" alt="Logo"></a>
-                                {# <img class="logo" src="C:\Users\cosmo\Documents\Pauline\gitPauline\atelierPaulineRousseau\photo\Pauline.png" width="20%"> #}
-                            </li>
-                    </div>        
-                            
-                    <div class="rigth">
-                                                <li class="nav-item">
-                                                    <div class="dropdown">
-                                                        <a class="navtitle" href="#">AIDE</a>
-                                                        <div class="dropdown-content">
-                                                                <a class="subCategory" href="#">FAQ</a>
-                                                                <a class="subCategory" href="{{path('conseils')}}">Conseils d'entretiens</a>
-                                                                <a class="subCategory" href="{{path('contact')}}">Contactez-nous</a>
-                                                        </div>
-                                                    </div>
-                                                </li>
 
-                                                
+						{# LISTE DEROULANTE CRUD#}
+						{% if is_granted('ROLE_ADMIN') %}
+							<li class="nav-item">
+								<div class="dropdown">
+									<span class="navtitle">REGLAGES</span>
+									<div class="dropdown-content">
+										<a class="subCategory" href="{{path('cate')}}">CATEGORIES</a>
+										<a class="subCategory" href="{{ path('subCategory') }}">SOUS CATEGORIES</a>
+										<a class="subCategory" href="{{path('prod')}}">PRODUITS</a>
+										<a class="subCategory" href="{{path('app_user_index')}}">UTILISATEURS</a>
+									</div>
+								</div>
+							</li>
+						{% endif %}
 
-                                            {# CONNEXION DECONNEXION CREER SON COMPTE #}
-                                                <li class="nav-item">
-                                                {% if app.user %}
-                                                    <a class="navtitle" href={{path('app_logout')}}> {# Deconnexion #}{{app.user.firstname}}</a>
-                                                   
-                                                </li>
-                                                {% else %}
-                                                    {# <a class="navtitle" href={{path('app_login')}}>CONNEXION </a> #}
-                                                    <a class="navtitle" href={{path('app_login')}}>COMPTE</a>
-                                                    {# <a class="navtitle" href={{path('app_register')}}>Créer son compte</a>  #}
-                                                    {# app_register provient du controller registrationController (route)
-                                                    app_login provient du controller securityController (route) 
-                                                    app_logout provient du controller securityController(route)#}
-                                                {% endif %}
-                                                
-                                                {# LISTE DEROULANTE CRUD#}
-                                                {% if is_granted('ROLE_ADMIN') %}
-                                                    <li class="nav-item">
-                                                        <div class="dropdown">
-                                                            <span class="dropbtn">REGLAGES</span> 
-                                                            <div class="dropdown-content">
-                                                                <a class="subCategory" href="{{path('cate')}}">CATEGORIES</a>
-                                                                <a class="subCategory" href="{{ path('subCategory') }}">SOUS CATEGORIES</a>
-                                                                <a class="subCategory" href="{{path('prod')}}">PRODUITS</a>
-                                                                <a class="subCategory" href="{{path('app_user_index')}}">UTILISATEURS</a>
-                                                            </div>
-                                                        </div>
-                                                    </li>   
-                                                {% endif %}
+						{# CONNEXION DECONNEXION CREER SON COMPTE #}
+						<li class="nav-item">
+							{% if app.user %}
+								<a
+									class="navtitle" href={{path('app_logout')}}>{# Deconnexion #}
+									{{app.user.firstname}}</a>
 
-                                                <li class="nav-item">
-                                                    {# <a class="navtitle" href="#">PANIER</a> #}
-                                                    <a class="navtitle" href="#">SHOPPING</a>
+							</li>
+						{% else %}
+							{# <a class="navtitle" href={{path('app_login')}}>CONNEXION </a> #}
+							<a class="navtitle" href={{path('app_login')}}>COMPTE</a>
+							{# <a class="navtitle" href={{path('app_register')}}>Créer son compte</a>  #}
+							{# app_register provient du controller registrationController (route)
+							app_login provient du controller securityController (route) 
+							app_logout provient du controller securityController(route)#}
+						{% endif %}
 
-                                                </li>
-                            </div>    
-                        </ul>
-                    </div>
-                </div>
-            </nav>   
+						{# <li class="nav-item">
+							<a class="navtitle" href="#">PANIER</a>
+						</li> #}
 
-{# 
-        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">Navbar</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            </button>
 
-            <div class="collapse navbar-collapse" id="navbarColor01">
-            <ul class="navbar-nav me-auto">
-                <li class="nav-item">
-                    <a class="navtitle" href="{{path('accueil')}}">ACCUEIL</a>
-                        <span class="visually-hidden">(current)</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Features</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Pricing</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">About</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Pierres Naturelles</a>
-                    <a class="dropdown-item" href="#">Colliers</a>
-                    <a class="dropdown-item" href="#">Bracelets</a>
-                    <a class="dropdown-item" href="#">Boucles d'oreilles</a>
-                    <div class="dropdown-divider"></div>
-                </div>
-                </li>
-            </ul>
-            <form class="d-flex">
-                <input class="form-control me-sm-2" type="text" placeholder="Search">
-                <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-            </form>
-            </div>
+						{# </div>
+						</li> #}
+					</ul>
+					{# <form class="d-flex">
+					<input class="form-control me-sm-2" type="text" placeholder="Search">
+					<button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+					</form> #}
+				</div>
+			</div>
+		</nav>
+
+
+		{% block body %}
+
+		 <!-- Mise en page de la barre de navigation et sur téléphone -->
+    <section class="header">
+        <div class="text-box">
+            <h1>ATELIER PAULINE</h1>
+            <p>Nous nous devons de partager l’histoire de nos bijoux de l’idée originelle à la production. 
+			<br> Cet exercice de transparence vous permettra de découvrir toutes les étapes qui rendent nos bijoux si originaux. </p>
+            <a href="#" class="hero-btn">Venez découvrir notre marque</a>
         </div>
-        </nav>
- #}
+    </section>
+
+    <div class="course">
+        <h1>Plonger dans l'univers de l'Atelier Pauline Rousseau</h1>
+           
+            {# <p>Au début il y a une idée, de l'inspiration, une envie. </p> #}
+        		
+
+			<div class="course-col">
+				<a href="{{path('all_bracelets')}}" class="hero-btn">Bracelets</a>
+			</div>
+
+			<div class="course-col">
+				<a href="{{path('all_earings')}}" class="hero-btn">Boucles d'Oreilles</a>
+			</div>
+
+		</div>
+    </div>
 
 
 
-        {% block body %}{% endblock %} 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
-        
-        {# <script>
-        function toggleForm(){
-            section = document.querySelector('section');
-            container = document.querySelector('.container');
-            section.classList.toggle('active');
-            container.classList.toggle('active');
-        }
-    </script> #}
 
-    <!--===== FOOTER =====-->
-    <footer>
-        <div>
-            <ul class="socials">
-                <li><a href="https://bit.ly/3KX05yV"><img class="facebook" src="{{asset('uploads/instagram.png')}}" alt="Instagram - Atelier Pauline Rousseau"></a></li>
-                <li><a href="https://etsy.me/3FUa86W"><img class="instagram"  src="{{asset('uploads/etsy.png')}}" alt="Etsy - Atlier Pauline Rousseau"></a></li>
-                <li><a href="#"><img class="logofooter" src="{{asset('uploads/logo.png')}}"></img></a></li>
-            </ul>
+		
+		{% endblock %}
 
-            <ul class="mentions">
-                <li><a href="#">Politique de confidentialité</a></li>
-                <li><a href="#">Mentions légales</a></li>
-                <li><a class="footer__copy">&#169; atelier Pauline Rousseau</a></li>
-            </ul>
-        </div>
+		{# <script>
+		function toggleForm(){
+		section = document.querySelector('section');
+		container = document.querySelector('.container');
+		section.classList.toggle('active');
+		container.classList.toggle('active');
+		}
+		</script> #}
 
+		<!--===== FOOTER =====-->
+			<footer>
+				<div>
+					<ul class="socials">
+						<li>
+							<a href="https://bit.ly/3KX05yV"><img class="facebook" src="{{asset('uploads/instagram.png')}}" alt="Instagram - Atelier Pauline Rousseau"></a>
+						</li>
+						<li>
+							<a href="https://etsy.me/3FUa86W"><img class="instagram" src="{{asset('uploads/etsy.png')}}" alt="Etsy - Atlier Pauline Rousseau"></a>
+						</li>
+						<li>
+							<a href="#"><img class="logofooter" src="{{asset('uploads/logo.png')}}"></img></a>
+						</li>
+					</ul>
 
-    </footer>
-    </body>
+					<ul class="mentions">
+						<li>
+							<a href="#">Politique de confidentialité</a>
+						</li>
+						<li>
+							<a href="#">Mentions légales</a>
+						</li>
+						<li>
+							<a class="footer__copy">&#169; atelier Pauline Rousseau</a>
+						</li>
+					</ul>
+				<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+				</div>
+		</footer>
+	</body>
 </html>
-
-
 

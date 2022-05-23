@@ -18,38 +18,29 @@ body {
 /* NAVBAR */
 /***********/
 
-.center{
-  padding-right:350px;
-}
 
 .logobarre{
   width: 10em;
+  margin-left:30px;
 }
 
-.left {
-  display: flex;
-  justify-content: flex-start;
-}
-
-.rigth {
-  display: flex;
-  justify-content: flex-end;
-}
 
 .navbar {
   background-color: #fadadd;
-  display: flex;
-  justify-content: space-around;
   align-items: center;
   text-decoration: none;
   list-style: none;
+  /* display: flex; */
+  /* justify-content: space-between; */
   /* font-size:10px; */
   /* padding: 30px 10%; */
 }
 
+
 .navtitle {
   color: white;
   font-size: 16px;
+  padding-left:90px;
 }
 
 .navtitle:hover {
@@ -68,22 +59,51 @@ h1 {
   text-decoration: none;
   /* CSS sur le texte SHOP */
 }
-
+/* 
 .logo {
   width: 2em;
   height: 2em;
   display: flex;
   justify-content: center;
   align-items: center;
-}
+} */
+
+/* .logobarre{ */
+  /* width: 10px; */
+  /* height: 10px; */
+  /* display: flex; */
+  /* justify-content: center; */
+  /* align-items: center; */
+  /* margin:0 30px 0 30px; */
+/* } */
+
+/* .navbarColor01{
+  background-color: #fadadd;
+} */
+/* 
+.center{
+  padding-right:350px;
+} */
+
+/* 
+.left {
+  display: flex;
+  justify-content: flex-start;
+} */
+/* 
+.rigth {
+  display: flex;
+  justify-content: flex-end;
+} */
 
 
 /* div dropdown - position des textes de la liste déroulante */
 .dropdown {
   position: relative;
-  display: inline-block;
+  display: contents;
   color: black;
   font-weight: bold;
+  /* display: inline-block; */
   /* color sur les catégories */
 }
 
@@ -92,6 +112,7 @@ h1 {
 .dropdown-content {
   display: none;
   position: absolute;
+  padding:10px;
   background-color: white;
   min-width: 160px;
   z-index: 1;
@@ -138,7 +159,7 @@ h1 {
   background-color: #367588;
   bottom: 0;
   left: 0;
-  transform-origin: right;
+  /* transform-origin: center; */
   transform: scaleX(0);
   transition: transform .3s ease-in-out;
 }
@@ -326,6 +347,8 @@ transform: translate(-50%); */
   margin-bottom: 5%;
   padding: 20px 12px;
   box-sizing: border-box;
+  font-size: 15px;
+  overflow:hidden;
 }
 
 .course h3 {
@@ -525,12 +548,12 @@ footer{
 
 .socials{
   display:flex;
-  justify-content:space-around;
+  justify-content:center;
   list-style:none;
 }
 
 .socials li{
-  width:70px;
+  width:30px;
   margin: 10px;
 }
 
@@ -561,7 +584,7 @@ footer{
 .header_product {
   min-height: 80vh;
   width: 100%;
-  background: url(https://i.etsystatic.com/isbl/e5d075/55147461/isbl_1680x420.55147461_36a0z7gp.jpg?version=0);
+  background-image: url(https://louyetu.fr/wp/wp-content/uploads/2019/10/LB_PLURIEL_BL08-1170x0.jpg);
   background-position: center;
   background-size: cover;
   position: relative;
@@ -822,6 +845,64 @@ font-weight:400;
   .product-content {
     padding-top: 0;
   }
+}
+
+
+
+@media (max-width: 800px) {
+  .navbar {
+      flex-direction: column;
+      align-items: flex-start;
+  }
+
+  .toggle-button {
+      display: flex;
+  }
+
+  .navbar-links {
+      display: none;
+      width: 100%;
+  }
+
+  .navbar-links ul {
+      width: 100%;
+      flex-direction: column;
+  }
+
+  .navbar-links ul li {
+      text-align: center;
+  }
+
+  .navbar-links ul li a {
+      padding: .5rem 1rem;
+  }
+
+  .navbar-links.active {
+      display: flex;
+  }
+}
+
+
+
+
+.gallery{
+  min-height: 80vh;
+  width: 100%;
+  background-image: url(https://louyetu.fr/wp/wp-content/uploads/2019/10/LB_PLURIEL_BL08-1170x0.jpg);
+  background-position: center;
+  background-size: cover;
+  position: relative;
+}
+
+.gallery img{
+  width: 40%;
+  margin: 5px;
+  transition: 1s;
+  border-radius: 20px;
+}
+
+.gallery img:hover{
+  transform: scale(1.1);
 }
 
 

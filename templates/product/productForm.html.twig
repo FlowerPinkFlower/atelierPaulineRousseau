@@ -26,6 +26,7 @@
                 <div>
                     <img src="{{ asset('/uploads/' ~ picture.name) }}" alt="image" width="10">
                     <a href="{{ path('delete_img', {id: picture.id}) }}" data-delete data-token="{{ csrf_token('delete' ~ picture.id) }}">Supprimer</a>
+                    {# crf_token permet de générer un token #}
                 </div>
             {% endfor %}
         {% endif %}

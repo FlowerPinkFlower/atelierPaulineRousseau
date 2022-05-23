@@ -4,90 +4,112 @@
 
 
 {% block body %}
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.1.3/dist/lux/bootstrap.min.css">
 
-        {# <h5 class="h5 mb-5 font-weight-normal">Boucles d'oreilles effet marbré bleu clair blanc argenté</h5>
-        <p class="price_product">22€</p> 
-        <a href="#" class="btn btn-primary">Ajouter au panier</a>
-        <h5 class="h5 mb-5 font-weight-normal">Description</h5>    
-        <p class="#">Livrée dans une boîte et un pochon <br>
-            Pour assurer une longue vie à votre bijou, consulter nos conseils d'entretien.
-        </p> #}
+            <nav class="navbar navbar-expand-lg navbar-dark">
+                    <div class="container-fluid">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
 
-    {# {% for prod in products %}
-        <p class="#">{{prod.unitPrice}}</p> 
-        <a href="#" class="btn btn-primary">Ajouter au panier</a>
-        <h1 class="h3 mb-3 font-weight-normal">{{prod.name}}</h1>
-        <p class="#">{{prod.description}}</p>    
-    {% endfor %}
-        <p class="#">Livrée dans une boîte et un pochon <br>
-            Pour assurer une longue vie à votre bijou, consulter nos conseils d'entretien.
-        </p> #}
+                        <div class="collapse navbar-collapse" >
+                            <ul class="navbar-nav me-auto">
+                        <div class="left">
+                            <li class="nav-item">
+                                <a class="navtitle" href="{{path('home')}}">ACCUEIL</a>
+                            </li>
+                            {# Changer la classe navbar-nav me-auto #}
+                            {# LISTE DEROULANTE PRODUITS #}
+                            <li class="nav-item">
+                                <div class="dropdown">
+                                    <span class="dropbtn">SHOP</span> 
+                                    <div class="dropdown-content">Pierres Naturelles
+                                        <a class="subCategory" href="{{path('all_necklaces')}}">Colliers</a>
+                                        <a class="subCategory" href="{{path('all_bracelets')}}">Bracelets</a>
+                                        <a class="subCategory" href="{{path('all_earings')}}">Boucles d'Oreilles</a>
+                                    </div>
+                                
+                                {# {% for cate in product %}
+                                    <li>{{cate}}</li> #}
+                                    {# {% for item in items %}
+                                        <a class="subCategory" href="{{path('subCategory')}}"></a>
+                                    {% endfor %} #}
+                                {# {% endfor %} #}
+                                        
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <div class="dropdown">
+                                    <a class="navtitle" href="#">LA MARQUE</a>
+                                    <div class="dropdown-content">
+                                        <a class="subCategory" href="{{path('savoirfaire')}}">Notre savoir-faire</a>
+                                    </div>
+                                </div>
+                            </li>
+                        </div>
 
+                        <div class="center">
+                            <li class="nav-item">
+                                <a class="navtitle-logo" href="{{path('home')}}"><img class="logobarre" src="{{asset('uploads/logo.png')}}" alt="Logo"></a>
+                                {# <img class="logo" src="C:\Users\cosmo\Documents\Pauline\gitPauline\atelierPaulineRousseau\photo\Pauline.png" width="20%"> #}
+                            </li>
+                        </div>        
+                                
+                        <div class="rigth">
+                            <li class="nav-item">
+                                <div class="dropdown">
+                                    <a class="navtitle" href="#">AIDE</a>
+                                    <div class="dropdown-content">
+                                            <a class="subCategory" href="#">FAQ</a>
+                                            <a class="subCategory" href="{{path('conseils')}}">Conseils d'entretiens</a>
+                                            <a class="subCategory" href="{{path('contact')}}">Contactez-nous</a>
+                                    </div>
+                                </div>
+                            </li>
+                            {# CONNEXION DECONNEXION CREER SON COMPTE #}
+                            <li class="nav-item">
+                            {% if app.user %}
+                                <a class="navtitle" href={{path('app_logout')}}> {# Deconnexion #}{{app.user.firstname}}</a>
+                                
+                            </li>
+                            {% else %}
+                                {# <a class="navtitle" href={{path('app_login')}}>CONNEXION </a> #}
+                                <a class="navtitle" href={{path('app_login')}}>COMPTE</a>
+                                {# <a class="navtitle" href={{path('app_register')}}>Créer son compte</a>  #}
+                                {# app_register provient du controller registrationController (route)
+                                app_login provient du controller securityController (route) 
+                                app_logout provient du controller securityController(route)#}
+                            {% endif %}
+                                
+                            {# LISTE DEROULANTE CRUD#}
+                            {% if is_granted('ROLE_ADMIN') %}
+                                <li class="nav-item">
+                                    <div class="dropdown">
+                                        <span class="dropbtn">REGLAGES</span> 
+                                        <div class="dropdown-content">
+                                            <a class="subCategory" href="{{path('cate')}}">CATEGORIES</a>
+                                            <a class="subCategory" href="{{ path('subCategory') }}">SOUS CATEGORIES</a>
+                                            <a class="subCategory" href="{{path('prod')}}">PRODUITS</a>
+                                            <a class="subCategory" href="{{path('app_user_index')}}">UTILISATEURS</a>
+                                        </div>
+                                    </div>
+                                </li>   
+                            {% endif %}
 
-<div class="car-wrapper">
-    <div class="car">
-        <div class="product-imgs">
-            <div class="img-display">
-                <div class="img-showcase">
-                    <img src="https://bit.ly/3vYFkPn" alt="boucles 1">
-                    <img src="https://bit.ly/3vPpgza" alt="boucles 2">
+                            <li class="nav-item">
+                                {# <a class="navtitle" href="#">PANIER</a> #}
+                                <a class="navtitle" href="#">SHOPPING</a>
+                            </li>
+
+                            </div>    
+                        </ul>
+                    </div>
                 </div>
-            </div>
-            
-            <div class="img-select">
-                <div class="img-item">
-                    <a href="#" data-id="1">
-                        <img src="https://bit.ly/3vYFkPn" alt="boucles 1">
-                    </a>
-                </div>
-            
-                <div class="img-item">
-                    <a href="#" data-id="2">
-                        <img src="https://bit.ly/3vPpgza" alt="boucles 2">
-                    </a>
-                </div>
-            </div>
+            </nav>   
 
-        </div>
 
-        <div class="product-content">
-            <h2 class="product-title">Boucles d'oreilles effet marbré bleu clair blanc argenté</h2>
-            
-            
-            <div class="product-price">
-                <!-- <p class="last-price">Ancien prix: <span>37€</span></p> -->
-                <p class="new-price"><span>29€</span></p>
-            </div>
-
-             <div class="purchase-info">
-                {# <input type="number" min="0" value="1"> #}
-                <button type="button" class="btn">Ajouter au panier</button>
-                {# <button type="button" class="btn">Compare</button> #}
-            </div>
-            
-            {# <a href="#" class="product-link">Ajouter au panier</a> #}
-            
-            <div class="product-detail">
-                <h2>Description</h2>
-                {# <p>Boucles d'oreilles marbré</p> #}
-                <ul>
-                    <li>Article fait main</li>
-                    <li>Envoyé par une petite entreprise basée ici : France</li>
-                    <li>Longueur: 7 Centimètres; Largeur: 2.5 Centimètres</li>
-                    <li>Matériaux : pate polymere, argile polymere</li>
-                    <li>Fermeture: Crochet d'oreille</li>
-                </ul>
-            </div>
-
-            <div class="social-links">
-                <a href="https://www.etsy.com/fr/shop/AtelierPaulineR"></a>
-                <a href="https://www.instagram.com/atelier.pauline_bijoux/"></a> 
-            </div>
-
-        </div>
-
-    </div>
-</div>
+                    
 
 
 {% endblock %}
