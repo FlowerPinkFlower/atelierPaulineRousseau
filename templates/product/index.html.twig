@@ -12,18 +12,14 @@
             <thead>
                 <tr>
                     <th class="text-center" scope="col">Nom</th>
-                    {# <th class="text-center" scope="col">Description</th> #}
-                    <th class="text-center" scope="col">Quantité</th>
-                    <th class="text-center" scope="col">Prix unitaire</th>
+                    <th class="text-center" scope="col">Photo</th>
                 </tr>
             </thead>
             <tbody>
                     {% for prod in products %}
                         <tr>
                             <td class="text-center" scope="col">{{prod.name}}</td>
-                            {# <td class="text-center" scope="col">{{prod.description}}</td> #}
-                            {# <td class="text-center" scope="col">{{prod.quantity}}</td> #}
-                            {# <td class="text-center" scope="col">{{prod.unitPrice}}</td> #}
+                            <td class="text-center" scope="col"> <img class="photoBijoux" src="{{asset("uploads/" ~ prod.photo)}}" alt="bijoux"></img></td>
                             <td><a class="buy-now" href="{{path('update_prod', {'id':prod.id} )}}">Modifier</a></td>
                             <td><a class="buy-now" href="{{path('delete_prod', {'id':prod.id} ) }}">Supprimer</a></td>
                                 

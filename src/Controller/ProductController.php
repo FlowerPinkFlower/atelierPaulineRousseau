@@ -123,32 +123,38 @@ class ProductController extends AbstractController
      */
     public function addOrUpdateProduct(Product $product=NULL, Request $request, EntityManagerInterface $em){
         if (!$product) {
-            
-            $product = new Product;
+            $product = new Product();
         }
-            $formProd=$this->createForm(ProdType::class,$product); //creation du formulaire
-            
-            $formProd->handleRequest($request); //traiter la demande = handle request.
+        $formProd=$this->createForm(ProdType::class,$product); //creation du formulaire
+        
+        $formProd->handleRequest($request); //traiter la demande = handle request.
 
-            if ($formProd->isSubmitted() && $formProd->isValid()) {
-                $photoProd=$formProd->get('photo')->getData(); //méthode qui permet de récupérer la donnée de la photo
+        if ($formProd->isSubmitted() && $formProd->isValid()) {
 
+            if($product->getPhoto()){
                 $photoName=$this->getParameter('images_directory'). '/' . $product->getPhoto();
-                if(file_exits($photoName)){ //si la photo existe, elle est supprimé
+                if(file_exists($photoName)){ //si la photo existe, elle est supprimé
                     unlink($photoName);
                 }
-                
-                
-                $em->persist($product); //on persiste category
-                $em->flush();
-                
-                return $this->redirectToRoute('prod');
             }
-        
-            return $this->render('product/productForm.html.twig', [
-                'formProd' => $formProd->createView(), //créer la nouvelle catégorie
-                'mode' => $product ->getId() !==null //modifie la catégorie
-            ]);
+            
+            $photoProd=$formProd->get('photo')->getData(); //méthode qui permet de récupérer la donnée de la photo
+
+            $photo = md5(uniqid()) . '.' . $photoProd->guessExtension(); //uniqid = basé sur le temps donc jamais un id identique
+            $photoProd->move($this->getParameter('images_directory'), $photo);
+
+            
+            $product->setPhoto($photo);
+            $em->persist($product); //on persiste produit
+            $em->flush();
+            
+            return $this->redirectToRoute('prod');
+        }
+    
+        return $this->render('product/productForm.html.twig', [
+            'formProd' => $formProd->createView(), //créer la nouvelle catégorie
+            'mode' => $product ->getId() !==null //modifie la catégorie
+        ]);
         
     }
 

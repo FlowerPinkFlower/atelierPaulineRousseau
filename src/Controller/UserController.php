@@ -27,7 +27,7 @@ class UserController extends AbstractController
     }
 
 
-     /**
+    /**
      * @Route("/new", name="app_user_new", methods={"GET", "POST"})
      */
     public function new(Request $request, UserRepository $userRepository, UserPasswordHasherInterface $userPasswordHasher): Response

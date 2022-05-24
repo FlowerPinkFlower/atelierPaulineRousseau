@@ -15,7 +15,7 @@
        <section class="product-list">
                     {% for bou in earing %}
                     <div class="card">
-
+                        <div class="image"> <img src="{{asset("uploads/" ~ bou.photo)}}" alt="bijoux"> </div> 
                         <div class="title">{{bou.name}}</div>
                         <div class="text">{{bou.unitprice}}€</div>
                         {# <a class="buy-now" href="#">Ajouter au panier</a> #}
@@ -28,6 +28,9 @@
 
     </div>
 {% endblock %}
+
+
+
 
 
 

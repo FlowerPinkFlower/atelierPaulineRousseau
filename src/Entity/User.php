@@ -26,9 +26,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\Column(type="string", length=180, unique=true)
      * 
      * @Assert\Regex(
-     * pattern="/^[ AZ 0-9 ._%+ - ] + @ [ AZ 0-9 . - ] + \. [ AZ ] {2,3}$/",
-     * match=true a,
-     * message="Votre email est invalide!"
+     * pattern="/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,4}$/",
+     * match=true,
+     * message="Votre mail est invalide!"
      * )
      */
     private $email;
@@ -43,9 +43,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\Column(type="string")
      * 
      * @Assert\Regex(
-     * pattern="/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#&()–[{}]:;',?/*~$^+=<>]).{8,20}$/",
+     * pattern="/^(?=.*[0-9]+.*)(?=.*[a-zA-Z]+.*)[0-9a-zA-Z]{6,}$/",
      * match=false,
-     * message="Votre mot de passe doit contenir au moins 8 caractères, 20 caractères maximum, un caractère spécial"
+     * message="Votre mot de passe doit contenir une majuscule, une minuscule, un chiffre et un caractère spécial!"
      * )
      * 
      */
@@ -183,4 +183,22 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+
+
+    // EMAIL
+    // * @Assert\Regex(
+    //     * pattern="/^[ AZ 0-9 ._%+ - ] + @ [ AZ 0-9 . - ] + \. [ AZ ] {2,4}$/",
+    //     * match=true,
+    //     * message="Votre email est invalide!"
+    //     * )
+
+
+//     MOT DE PASSE
+
+//     * @Assert\Regex(
+//         * pattern="/^(?=.{10,}$)(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W).*$/",
+//         * match=true,
+//         * message="Doit contenir au moins 10 caractères, une majuscule, une minuscule, un chiffre et un caratère spécial"
+//         * )
 }
+
