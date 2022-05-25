@@ -6,7 +6,9 @@ use App\Form\ProdType;
 use App\Entity\Product;
 use App\Entity\Category;
 use App\Repository\ProductRepository;
+use App\Repository\CategoryRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use App\Repository\SubCategoryRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -19,11 +21,13 @@ class ProductController extends AbstractController
     /**
      * @Route("/product", name="prod")
      */
-    public function showAllProducts(ProductRepository $prodRepo): Response
+    public function showAllProducts(ProductRepository $prodRepo, SubCategoryRepository $subCateRepo, CategoryRepository $cateRepo): Response
     {
         $products=$prodRepo->findAll();
         return $this->render('product/index.html.twig', [
             'products' => $products,
+            'subCate'=>$subCateRepo->findAll(),  
+            'cate'=>$cateRepo->findAll()
         ]);
     }
 
@@ -45,12 +49,14 @@ class ProductController extends AbstractController
     /**
      * @Route("/product/allnecklaces", name="all_necklaces")
      */
-    public function showAllNecklace(ProductRepository $prodRepo): Response
+    public function showAllNecklace(ProductRepository $prodRepo, CategoryRepository $cateRepo, SubCategoryRepository $subCateRepo): Response
     {
         $products=$prodRepo->findBy(['subCategory'=>'2']);
         return $this->render('product/indexAllNecklace.html.twig', [
-            'necklace' => $products
-        ]);
+            'necklace' => $products,
+            'cate'=>$cateRepo->findAll(),
+            'SubCate'=>$subCateRepo->findAll(),
+         ]);
     }
 
         
@@ -61,7 +67,9 @@ class ProductController extends AbstractController
     public function showNeacklaces(Product $product): Response
     {
         return $this->render('product/showNeacklaces.html.twig', [
-            'necklace' => $product
+            'necklace' => $product,
+            'subCate'=>$subCateRepo->findAll(),  
+            'cate'=>$cateRepo->findAll()
         ]);
     }
 
@@ -70,21 +78,25 @@ class ProductController extends AbstractController
     /**
      * @Route("/product/allbracelets", name="all_bracelets")
      */
-    public function showAllBracelets(ProductRepository $prodRepo): Response
+    public function showAllBracelets(ProductRepository $prodRepo, SubCategoryRepository $subCateRepo, CategoryRepository $cateRepo): Response
     {
         $products=$prodRepo->findBy(['subCategory'=>'3']);
         return $this->render('product/indexAllBracelets.html.twig', [
             'bracelet' => $products,
+            'subCate'=>$subCateRepo->findAll(),  
+            'cate'=>$cateRepo->findAll()
         ]);
     }
 
     /**
      * @Route("/product/allbracelets/bracelet/{id}", name="bracelet", methods={"GET"})
      */
-    public function showBracelet(Product $product): Response
+    public function showBracelet(Product $product, SubCategoryRepository $subCateRepo, CategoryRepository $cateRepo): Response
     {
         return $this->render('product/showBracelet.html.twig', [
             'bracelet' => $product,
+            'subCate'=>$subCateRepo->findAll(),  
+            'cate'=>$cateRepo->findAll()
         ]);
     }
 
@@ -94,12 +106,14 @@ class ProductController extends AbstractController
     /**
      * @Route("/product/allearings", name="all_earings")
      */
-    public function showAllEarings(ProductRepository $prodRepo): Response
+    public function showAllEarings(ProductRepository $prodRepo, SubCategoryRepository $subCateRepo, CategoryRepository $cateRepo): Response
     {
         // $products=$prodRepo->findBy(['subCategory'=>'2']);
         $products=$prodRepo->findAll();
         return $this->render('product/indexAllEarings.html.twig', [
             'earing' => $products,
+            'subCate'=>$subCateRepo->findAll(),  
+            'cate'=>$cateRepo->findAll()
         ]);
     }
 
@@ -108,10 +122,12 @@ class ProductController extends AbstractController
     /**
      * @Route("/product/allearings/earing/{id}", name="earing", methods={"GET"})
      */
-    public function showEaring(Product $product): Response
+    public function showEaring(Product $product, CategoryRepository $cateRepo, SubCategoryRepository $subCateRepo): Response
     {
         return $this->render('product/showEaring.html.twig', [
             'earing' => $product,
+            'cate'=>$cateRepo->findAll(),
+            'SubCate'=>$subCateRepo->findAll(),
         ]);
     }
 
@@ -121,7 +137,7 @@ class ProductController extends AbstractController
      * @Route("/product/new", name="new_prod")
      * @Route("/product/update/{id}", name="update_prod")
      */
-    public function addOrUpdateProduct(Product $product=NULL, Request $request, EntityManagerInterface $em){
+    public function addOrUpdateProduct(Product $product=NULL, Request $request, EntityManagerInterface $em, SubCategoryRepository $subCateRepo, CategoryRepository $cateRepo){
         if (!$product) {
             $product = new Product();
         }
@@ -153,7 +169,9 @@ class ProductController extends AbstractController
     
         return $this->render('product/productForm.html.twig', [
             'formProd' => $formProd->createView(), //créer la nouvelle catégorie
-            'mode' => $product ->getId() !==null //modifie la catégorie
+            'mode' => $product ->getId() !==null, //modifie la catégorie
+            'subCate'=>$subCateRepo->findAll(),  
+            'cate'=>$cateRepo->findAll()
         ]);
         
     }
@@ -167,10 +185,13 @@ class ProductController extends AbstractController
     /**
      * @Route("/product/delete/{id}", name="delete_prod")
      */
-    public function deleteProduct(Product $product, EntityManagerInterface $em){
+    public function deleteProduct(Product $product, EntityManagerInterface $em, SubCategoryRepository $subCateRepo, CategoryRepository $cateRepo){
         $em->remove($product);
         $em->flush();
-        return $this->redirectToRoute('prod');
+        return $this->redirectToRoute('prod',[
+            'subCate'=>$subCateRepo->findAll(),  
+            'cate'=>$cateRepo->findAll()
+        ]);
     }
 }
 

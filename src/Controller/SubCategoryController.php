@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Form\SubCateType;
 use App\Entity\SubCategory;
+use App\Repository\CategoryRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\SubCategoryRepository;
 use Symfony\Component\HttpFoundation\Request;
@@ -17,11 +18,13 @@ class SubCategoryController extends AbstractController
     /**
      * @Route("/sub/category", name="subCategory")
      */
-    public function showAllSubCategoryController(SubCategoryRepository $subCateRepo): Response
+    public function showAllSubCategoryController(SubCategoryRepository $subCateRepo, CategoryRepository $cateRepo): Response
     {
         $subCategory=$subCateRepo->findAll();
         return $this->render('sub_category/index.html.twig', [
             'subCate' => $subCategory,
+            'cate'=>$cateRepo->findAll(),
+            'SubCate'=>$subCateRepo->findAll()
         ]);
     }
 

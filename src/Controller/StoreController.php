@@ -3,32 +3,39 @@
 namespace App\Controller;
 
 
-// use App\Entity\Product;
 use App\Entity\Category;
-// use App\Entity\SubCategory;
-// use App\Repository\ProductRepository;
 use App\Repository\CategoryRepository;
+use App\Repository\SubCategoryRepository;
+// use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-// use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class StoreController extends AbstractController
 {
-    /**
+
+
+     /**
      * @Route("/", name="home")
      */
-    public function index(): Response
+    public function index(SubCategoryRepository $subCateRepo, CategoryRepository $cateRepo): Response
     {
-        return $this->render('store/index.html.twig');
+        return $this->render('store/index.html.twig', [
+        'cate'=>$cateRepo->findAll(),
+        'SubCate'=>$subCateRepo->findAll()
+
+        ]);
     }
 
     /**
      * @Route("/contact", name="contact")
      */
-    public function contact(): Response
+    public function contact(SubCategoryRepository $subCateRepo, CategoryRepository $cateRepo): Response
     {
-        return $this->render('store/contact.html.twig');
+        return $this->render('store/contact.html.twig',[
+        'cate'=>$cateRepo->findAll(),
+        'SubCate'=>$subCateRepo->findAll()
+        ]);
     }
 
     /**
@@ -42,23 +49,26 @@ class StoreController extends AbstractController
     /**
      * @Route("/savoirfaire", name="savoirfaire")
      */
-    public function savoirfaire(): Response
+    public function savoirfaire(SubCategoryRepository $subCateRepo, CategoryRepository $cateRepo): Response
     {
-        return $this->render('store/savoirfaire.html.twig');
-    }
-
-    /**
-     * @Route("/", name="home")
-     */
-    public function indexByCategory(CategoryRepository $categoryRepo): Response
-    {
-
-        return $this->render('base.html.twig', [
-            'categorie'=>$categoryRepo->findAll(),
-            // 'subCategory'=>$subCategoryRepo->findAll(),
-            // 'product'=>$product->findAll(),
+        return $this->render('store/savoirfaire.html.twig',[
+        'cate'=>$cateRepo->findAll(),
+        'SubCate'=>$subCateRepo->findAll()
         ]);
     }
+
+    // /**
+    //  * @Route("/", name="home")
+    //  */
+    // public function indexByCategory(CategoryRepository $categoryRepo): Response
+    // {
+
+    //     return $this->render('base.html.twig', [
+    //         'categorie'=>$categoryRepo->findAll(),
+    //         'subCategory'=>$subCategoryRepo->findAll(),
+    //         'product'=>$product->findAll(),
+    //     ]);
+    // }
 
 
     // /**
@@ -72,9 +82,12 @@ class StoreController extends AbstractController
     /**
      * @Route("/conseils", name="conseils")
      */
-    public function conseils(): Response
+    public function conseils(SubCategoryRepository $subCateRepo, CategoryRepository $cateRepo): Response
     {
-        return $this->render('store/conseils.html.twig');
+        return $this->render('store/conseils.html.twig',[
+        'cate'=>$cateRepo->findAll(),
+        'SubCate'=>$subCateRepo->findAll()
+        ]);
     }
 
 }

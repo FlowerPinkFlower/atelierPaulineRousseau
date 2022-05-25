@@ -577,9 +577,9 @@ footer{
 }
 
 
-/*==================================*/
-/* ====== TEST FICHE PRODUITS ======*/
-/*==================================*/
+/*========================================*/
+/* ====== FICHE DESCRIPTION PRODUIT ======*/
+/*========================================*/
 
 .header_product {
   min-height: 80vh;
@@ -883,8 +883,6 @@ font-weight:400;
 }
 
 
-
-
 .gallery{
   min-height: 80vh;
   width: 100%;
@@ -906,4 +904,10 @@ font-weight:400;
 }
 
 
+
+.photoBijoux { 
+  width: 30%;
+  margin: 5px;
+  border-radius: 20px;
+}
 

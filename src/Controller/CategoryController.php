@@ -6,6 +6,7 @@ use App\Form\CateType;
 use App\Entity\Category;
 use App\Repository\CategoryRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use App\Repository\SubCategoryRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -17,11 +18,13 @@ class CategoryController extends AbstractController
     /**
      * @Route("/category", name="cate")
      */
-    public function showAllCategories(CategoryRepository $cateRepo): Response
+    public function showAllCategories(CategoryRepository $cateRepo, SubCategoryRepository $subCateRepo): Response
     {
         $categories = $cateRepo->findAll(); //On lui demande d'afficher toutes les catégories
         return $this->render('category/index.html.twig', [
             'categories' => $categories,
+            'cate'=>$cateRepo->findAll(),
+            'SubCate'=>$subCateRepo->findAll()
         ]);
     }
 
@@ -30,7 +33,7 @@ class CategoryController extends AbstractController
      * @Route("/category/new", name="new_cate")
      * @Route("/category/add/{id}", name="add_cate")
      */
-    public function updateOrAddCategory(Category $category=NULL, Request $request, EntityManagerInterface $em){
+    public function updateOrAddCategory(Category $category=NULL, Request $request, EntityManagerInterface $em, CategoryRepository $cateRepo, SubCategoryRepository $subCateRepo){
         if (!$category) {
             
             $category = new Category;
@@ -48,7 +51,9 @@ class CategoryController extends AbstractController
         
             return $this->render('category/categoryForm.html.twig', [
                 'formCate' => $formCate->createView(), //créer la nouvelle catégorie
-                'mode' => $category ->getId() !==null //modifie la catégorie
+                'mode' => $category ->getId() !==null, //modifie la catégorie
+                'cate'=>$cateRepo->findAll(),
+                'SubCate'=>$subCateRepo->findAll()
             ]);
         
     }

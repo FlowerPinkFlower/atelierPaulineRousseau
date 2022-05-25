@@ -3,18 +3,19 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta
+		name="viewport" content="width=device-width, initial-scale=1.0">
 
 		{# <!DOCTYPE html>
 		<html>
 		<head>
 		<meta charset="UTF-8"> #}
 		<title>
-			{% block title %}🌸Atelier Pauline🌸{% endblock %}
+			{% block title %}🌸Atelier Pauline🌸
+			{% endblock %}
 		</title>
 		{# <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>🌸</text></svg>"> #}
 		{# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
-
 
 
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.1.3/dist/lux/bootstrap.min.css">
@@ -37,48 +38,60 @@
 
 				<div class="collapse navbar-collapse" id="navbarColor01">
 					<ul class="navbar-nav me-auto">
-                         
-                            <li class="nav-item">
-                                <a class="navtitle" href="{{path('home')}}">ACCUEIL</a>
-                            </li>
+
+						<li class="nav-item">
+							<a class="navtitle" href="{{path('home')}}">ACCUEIL</a>
+						</li>
 
 
-                            <li class="nav-item">
-                                <div class="dropdown">
-                                    <span class="navtitle">SHOP</span>
-                                    <div class="dropdown-content">Pierres Naturelles
-                                        <a class="subCategory" href="{{path('all_necklaces')}}">Colliers</a>
-                                        <a class="subCategory" href="{{path('all_bracelets')}}">Bracelets</a>
-                                        <a class="subCategory" href="{{path('all_earings')}}">Boucles d'Oreilles</a>
-                                    </div>
+						<li class="nav-item">
+							<div class="dropdown">
+								<span class="navtitle">SHOP</span>
 
-                                    {# {% for cate in product %}
-                                    <li>{{cate}}</li> #}
-                                {# {% for item in items %}
-                                <a class="subCategory" href="{{path('subCategory')}}"></a>
-                                {% endfor %} #}
-                                    {# {% endfor %} #}
+								<div class="dropdown-content">
+									{% for cates in cate %}
+										{{cates.name}}
+										{% for nomSubCategorie in SubCate %}
+											<a class="subCategory" href="{{path('all_necklaces')}}">{{nomSubCategorie.name}}</a>
+											<a class="subCategory" href="{{path('all_bracelets')}}">{{nomSubCategorie.name}}</a>
+											<a class="subCategory" href="{{path('all_earings')}}">{{nomSubCategorie.name}}</a>
+										{% endfor %}
+									{% endfor %}
+								</div>
 
-                                    {# </div> #}
-                                </div>
-                            </li>
-                            <li class="nav-item">
-                                <div class="dropdown">
-                                    <a class="navtitle" href="#">LA MARQUE</a>
-                                    <div class="dropdown-content">
-                                        <a class="subCategory" href="{{path('savoirfaire')}}">Notre savoir-faire</a>
-                                    </div>
-                                </div>
-                            </li>
+								{# <div class="dropdown-content">Pierres Naturelles
+								<a class="subCategory" href="{{path('all_necklaces')}}">Colliers</a>
+								<a class="subCategory" href="{{path('all_bracelets')}}">Bracelets</a>
+								<a class="subCategory" href="{{path('all_earings')}}">Boucles d'Oreilles</a>
+								</div> #}
 
-							<li class="nav-item">
-                                <div class="dropdown">
-                                    <a class="navtitle" href="#">AIDE</a>
-                                    <div class="dropdown-content">
-                                        <a class="subCategory" href="{{path('contact')}}">Contactez-nous</a>
-                                    </div>
-                                </div>
-                            </li>
+							{# {% for cate in product %}
+							<li>{{cate}}</li> #}
+								{# {% for item in items %}
+								<a class="subCategory" href="{{path('subCategory')}}"></a>
+								{% endfor %} #}
+								{# {% endfor %} #}
+
+								{# </div> #}
+							</div>
+						</li>
+						<li class="nav-item">
+							<div class="dropdown">
+								<a class="navtitle" href="#">LA MARQUE</a>
+								<div class="dropdown-content">
+									<a class="subCategory" href="{{path('savoirfaire')}}">Notre savoir-faire</a>
+								</div>
+							</div>
+						</li>
+
+						<li class="nav-item">
+							<div class="dropdown">
+								<a class="navtitle" href="#">AIDE</a>
+								<div class="dropdown-content">
+									<a class="subCategory" href="{{path('contact')}}">Contactez-nous</a>
+								</div>
+							</div>
+						</li>
 
 
 						{# LISTE DEROULANTE CRUD#}
@@ -100,7 +113,8 @@
 						<li class="nav-item">
 							{% if app.user %}
 								<a
-									class="navtitle" href={{path('app_logout')}}>{# Deconnexion #}
+									class="navtitle" href={{path('app_logout')}}>
+									{# Deconnexion #}
 									{{app.user.firstname}}</a>
 
 							</li>
@@ -114,7 +128,7 @@
 						{% endif %}
 
 						{# <li class="nav-item">
-							<a class="navtitle" href="#">PANIER</a>
+						<a class="navtitle" href="#">PANIER</a>
 						</li> #}
 
 
@@ -130,40 +144,7 @@
 		</nav>
 
 
-		{% block body %}
-
-		 <!-- Mise en page de la barre de navigation et sur téléphone -->
-    <section class="header">
-        <div class="text-box">
-            <h1>ATELIER PAULINE</h1>
-            <p>Nous nous devons de partager l’histoire de nos bijoux de l’idée originelle à la production. 
-			<br> Cet exercice de transparence vous permettra de découvrir toutes les étapes qui rendent nos bijoux si originaux. </p>
-            <a href="#" class="hero-btn">Venez découvrir notre marque</a>
-        </div>
-    </section>
-
-    <div class="course">
-        <h1>Plonger dans l'univers de l'Atelier Pauline Rousseau</h1>
-           
-            {# <p>Au début il y a une idée, de l'inspiration, une envie. </p> #}
-        		
-
-			<div class="course-col">
-				<a href="{{path('all_bracelets')}}" class="hero-btn">Bracelets</a>
-			</div>
-
-			<div class="course-col">
-				<a href="{{path('all_earings')}}" class="hero-btn">Boucles d'Oreilles</a>
-			</div>
-
-		</div>
-    </div>
-
-
-
-
-		
-		{% endblock %}
+		{% block body %}{% endblock %}
 
 		{# <script>
 		function toggleForm(){
@@ -175,34 +156,33 @@
 		</script> #}
 
 		<!--===== FOOTER =====-->
-			<footer>
-				<div>
-					<ul class="socials">
-						<li>
-							<a href="https://bit.ly/3KX05yV"><img class="facebook" src="{{asset('uploads/instagram.png')}}" alt="Instagram - Atelier Pauline Rousseau"></a>
-						</li>
-						<li>
-							<a href="https://etsy.me/3FUa86W"><img class="instagram" src="{{asset('uploads/etsy.png')}}" alt="Etsy - Atlier Pauline Rousseau"></a>
-						</li>
-						<li>
-							<a href="#"><img class="logofooter" src="{{asset('uploads/logo.png')}}"></img></a>
-						</li>
-					</ul>
+		<footer>
+			<div>
+				<ul class="socials">
+					<li>
+						<a href="https://bit.ly/3KX05yV"><img class="facebook" src="{{asset('uploads/instagram.png')}}" alt="Instagram - Atelier Pauline Rousseau"></a>
+					</li>
+					<li>
+						<a href="https://etsy.me/3FUa86W"><img class="instagram" src="{{asset('uploads/etsy.png')}}" alt="Etsy - Atlier Pauline Rousseau"></a>
+					</li>
+					<li>
+						<a href="#"><img class="logofooter" src="{{asset('uploads/logo.png')}}"></img>
+					</li>
+				</a>
+			</li>
+		</ul>
 
-					<ul class="mentions">
-						<li>
-							<a href="#">Politique de confidentialité</a>
-						</li>
-						<li>
-							<a href="#">Mentions légales</a>
-						</li>
-						<li>
-							<a class="footer__copy">&#169; atelier Pauline Rousseau</a>
-						</li>
-					</ul>
-				<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
-				</div>
-		</footer>
+		<ul class="mentions">
+			<li>
+				<a href="#">Politique de confidentialité</a>
+			</li>
+			<li>
+				<a href="#">Mentions légales</a>
+			</li>
+			<li>
+				<a class="footer__copy">&#169; atelier Pauline Rousseau</a>
+			</li>
+		</ul>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
 	</body>
-</html>
-
+</html></div></footer></body></html>

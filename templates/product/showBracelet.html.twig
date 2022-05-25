@@ -38,25 +38,10 @@
         <div class="product-imgs">
             <div class="img-display">
                 <div class="img-showcase">
-                    <img src="https://bit.ly/3vYFkPn" alt="boucles 1">
-                    <img src="https://bit.ly/3vPpgza" alt="boucles 2">
+                    <img src="{{asset ("/uploads/" ~ bracelet.photo)}}" alt="bijoux"></img>
                 </div>
             </div>
             
-            <div class="img-select">
-                <div class="img-item">
-                    <a href="#" data-id="1">
-                        <img src="https://bit.ly/3vYFkPn" alt="boucles 1">
-                    </a>
-                </div>
-            
-                <div class="img-item">
-                    <a href="#" data-id="2">
-                        <img src="https://bit.ly/3vPpgza" alt="boucles 2">
-                    </a>
-                </div>
-            </div>
-
         </div>
 
         <div class="product-content">
@@ -86,11 +71,11 @@
                 <h2>Détail</h2>
                 {# <p>Boucles d'oreilles marbré</p> #}
                 <ul>
-                    <li>Matériaux: {{bracelet.material}}</li>
-                    <li>Diamètre: {{bracelet.diameter}}</li>
-                    <li>Poids: {{bracelet.weight}}</li>
-                    <li>Dorure: {{bracelet.gilding}}</li>
-                    <li>Longueur de la chaine: {{bracelet.chainLength}}</li>
+                    <li>{{bracelet.material}}</li>
+                    <li>{{bracelet.diameter}}</li>
+                    <li>{{bracelet.weight}}</li>
+                    <li>{{bracelet.gilding}}</li>
+                    <li>{{bracelet.chainLength}}</li>
                 </ul>
             </div>
 

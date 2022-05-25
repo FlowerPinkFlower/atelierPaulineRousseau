@@ -19,11 +19,9 @@
                     {% for prod in products %}
                         <tr>
                             <td class="text-center" scope="col">{{prod.name}}</td>
-                            <td class="text-center" scope="col"> <img class="photoBijoux" src="{{asset("uploads/" ~ prod.photo)}}" alt="bijoux"></img></td>
+                            <td> <img class="photoBijoux" src="{{asset("uploads/" ~ prod.photo)}}" alt="bijoux"></img></td>
                             <td><a class="buy-now" href="{{path('update_prod', {'id':prod.id} )}}">Modifier</a></td>
-                            <td><a class="buy-now" href="{{path('delete_prod', {'id':prod.id} ) }}">Supprimer</a></td>
-                                
-                            
+                            <td><a class="buy-now" href="{{path('delete_prod', {'id':prod.id} ) }}">Supprimer</a></td> 
                         </tr>
                     {% endfor %}
             </tbody>
