@@ -64,11 +64,11 @@ class ProductController extends AbstractController
     /**
      * @Route("/product/allnecklaces/necklace/{id}", name="necklace", methods={"GET"})
      */
-    public function showNeacklaces(Product $product): Response
+    public function showNeacklaces(Product $product, CategoryRepository $cateRepo, SubCategoryRepository $subCateRepo): Response
     {
         return $this->render('product/showNeacklaces.html.twig', [
             'necklace' => $product,
-            'subCate'=>$subCateRepo->findAll(),  
+            'SubCate'=>$subCateRepo->findAll(),  
             'cate'=>$cateRepo->findAll()
         ]);
     }
@@ -78,13 +78,13 @@ class ProductController extends AbstractController
     /**
      * @Route("/product/allbracelets", name="all_bracelets")
      */
-    public function showAllBracelets(ProductRepository $prodRepo, SubCategoryRepository $subCateRepo, CategoryRepository $cateRepo): Response
+    public function showAllBracelets(ProductRepository $prodRepo, CategoryRepository $cateRepo, SubCategoryRepository $subCateRepo): Response
     {
         $products=$prodRepo->findBy(['subCategory'=>'3']);
         return $this->render('product/indexAllBracelets.html.twig', [
             'bracelet' => $products,
-            'subCate'=>$subCateRepo->findAll(),  
-            'cate'=>$cateRepo->findAll()
+            'cate'=>$cateRepo->findAll(),
+            'SubCate'=>$subCateRepo->findAll()  
         ]);
     }
 
@@ -95,7 +95,7 @@ class ProductController extends AbstractController
     {
         return $this->render('product/showBracelet.html.twig', [
             'bracelet' => $product,
-            'subCate'=>$subCateRepo->findAll(),  
+            'SubCate'=>$subCateRepo->findAll(),  
             'cate'=>$cateRepo->findAll()
         ]);
     }
@@ -108,11 +108,10 @@ class ProductController extends AbstractController
      */
     public function showAllEarings(ProductRepository $prodRepo, SubCategoryRepository $subCateRepo, CategoryRepository $cateRepo): Response
     {
-        // $products=$prodRepo->findBy(['subCategory'=>'2']);
-        $products=$prodRepo->findAll();
+        $products=$prodRepo->findBy(['subCategory'=>'1']);
         return $this->render('product/indexAllEarings.html.twig', [
             'earing' => $products,
-            'subCate'=>$subCateRepo->findAll(),  
+            'SubCate'=>$subCateRepo->findAll(),  
             'cate'=>$cateRepo->findAll()
         ]);
     }

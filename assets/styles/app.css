@@ -299,7 +299,6 @@ transform: translate(-50%); */
   border-radius: 5px;
   font-size: 15px;
   text-transform: uppercase;
-
 }
 
 .hero-btn:hover {
@@ -310,6 +309,31 @@ transform: translate(-50%); */
   padding: 20px 10px 20px 10px;
   border-radius: 5px;
 }
+
+.accueilImage{
+  border-radius: 10px;
+}
+
+.accueilImageA{
+  width: 40%;
+  margin: 40px;
+  transition: 1s;
+}
+
+.accueilImageA:hover {
+  transform: scale(1.1);
+}
+
+
+.accueilMention{
+  display:flex;
+  justify-content:space-between;
+  list-style:none;
+  font-size:15px;
+  font-weight:bold;
+  color:black;
+}
+
 
 /* COURSE */
 /* Mise en forme de la section */
@@ -327,7 +351,6 @@ transform: translate(-50%); */
 }
 
 .course p {
-  color: plum;
   font-size: 14px;
   font-weight: 300px;
   line-height: 22px;
@@ -500,7 +523,7 @@ section .container .user .formBx {
 
 
 .header_savoirfaire {
-  min-height: 80vh;
+  min-height: 50vh;
   width: 100%;
   background-image: url(https://louyetu.fr/wp/wp-content/uploads/2021/02/BLOC-3-1-955x0.jpg);
   background-position: center;
@@ -582,9 +605,9 @@ footer{
 /*========================================*/
 
 .header_product {
-  min-height: 80vh;
+  min-height: 50vh;
   width: 100%;
-  background-image: url(https://louyetu.fr/wp/wp-content/uploads/2019/10/LB_PLURIEL_BL08-1170x0.jpg);
+  background-image: url(https://louyetu.fr/wp/wp-content/uploads/2022/05/HEADER_6-1170x0.jpg);
   background-position: center;
   background-size: cover;
   position: relative;

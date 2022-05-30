@@ -52,8 +52,8 @@
 									{% for cates in cate %}
 										{{cates.name}}
 										{% for nomSubCategorie in SubCate %}
-											<a class="subCategory" href="{{path('all_necklaces')}}">{{nomSubCategorie.name}}</a>
 											<a class="subCategory" href="{{path('all_bracelets')}}">{{nomSubCategorie.name}}</a>
+											<a class="subCategory" href="{{path('all_necklaces')}}">{{nomSubCategorie.name}}</a>
 											<a class="subCategory" href="{{path('all_earings')}}">{{nomSubCategorie.name}}</a>
 										{% endfor %}
 									{% endfor %}
