@@ -171,86 +171,6 @@ h1 {
 }
 
 
-/***********/
-/* PRODUCT */
-/***********/
-.product-list {
-  padding: 3em;
-  /* background-color:plum; */
-}
-
-/* Mise en forme du cadre du produit */
-.product-list .card {
-  background-color: white;
-  padding: 1em;
-  border: none;
-  text-align: center;
-}
-
-/* Mise en forme du titre du produit */
-.card .title {
-  font-size: 12px;
-  font-weight: bold;
-  text-transform: uppercase;
-  color: black;
-  text-align: center;
-  padding: 10px 0 10px 0;
-}
-
-/* Redimension image */
-.card img {
-  max-width: 80%;
-  border-radius: 5px;
-}
-
-/* Mise en forme description produit */
-.card .text {
-  text-align: center;
-  /* margin-left:2em; */
-}
-
-
-/* Mise en forme des boutons */
-.buy-now {
-  background-color: #fadadd;
-  border: none;
-  padding: 10px;
-  border-radius: 5px;
-  font-weight: bold;
-  margin: 10px;
-}
-
-.buy-now:hover {
-  background-color: white;
-  color: #fadadd;
-  border: solid 1px #fadadd;
-  padding: 10px;
-  border-radius: 5px;
-  font-weight: bold;
-  /* box-shadow: 0px 5px 5px silver; */
-}
-
-
-/* Mise en page des produits */
-.product-list {
-  display: grid;
-  /* En faire une grille */
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-column-gap: 20px;
-  grid-row-gap: 40px;
-}
-
-.connection {
-  display: block;
-  padding: 20px;
-}
-
-button {
-  margin: 10px;
-}
-
-
-
 /**********/
 /*ACCUEIL*/
 /**********/
@@ -334,9 +254,14 @@ transform: translate(-50%); */
   color:black;
 }
 
+.stickeraccueil{
+  width: 30%;
+  margin-left:35%;
+}
 
-/* COURSE */
-/* Mise en forme de la section */
+
+/* MISE EN FORME DIV COURSE */
+/* Mise en forme de la section colonne photo */
 .course {
   width: 90%;
   margin: auto;
@@ -378,14 +303,13 @@ transform: translate(-50%); */
   text-align: center;
   font-weight: 600;
   margin: 10px 0;
-}
+} 
 
 
 
-
-/************/
-/* CONTACT */
-/************/
+/* ===================================*/
+/* ============= CONTACT =============*/
+/* ===================================*/
 /* Style inputs with type="text", select elements and textareas */
 .contact input,
 select,
@@ -560,6 +484,8 @@ footer{
   background-color: #fadadd;
   text-align: center;
   padding:40px 0px 40px 0px;
+  position: static;
+top: 40px; left: 40px;
 }
 
 .mentions{
@@ -581,28 +507,38 @@ footer{
 }
 
 
-@media (max-width:991px) {
-  section .container {
-    max-width: 400px;
-  }
-
-  section .container .row li a {
-    display: none;
-  }
-
-  section .container .row li a{
-    width: 100%;
-  }
-
-  section .container.active .row li a{
-    top: -100%;
-  }
-}
-
-
 /*========================================*/
 /* ====== FICHE DESCRIPTION PRODUIT ======*/
 /*========================================*/
+
+
+/* .gallery{
+  min-height: 80vh;
+  width: 100%;
+  background-image: url(https://louyetu.fr/wp/wp-content/uploads/2019/10/LB_PLURIEL_BL08-1170x0.jpg);
+  background-position: center;
+  background-size: cover;
+  position: relative;
+}
+
+.gallery img{
+  width: 40%;
+  margin: 5px;
+  transition: 1s;
+  border-radius: 20px;
+}
+
+.gallery img:hover{
+  transform: scale(1.1);
+}
+
+.photoBijoux { 
+  width: 30%;
+  margin: 5px;
+  border-radius: 20px;
+} */
+
+
 
 .header_product {
   min-height: 50vh;
@@ -819,6 +755,92 @@ font-weight:400;
   color:white;
 } */
 
+
+
+/***********/
+/* PRODUCT */
+/***********/
+.product-list {
+  padding: 3em;
+  /* background-color:plum; */
+}
+
+/* Mise en forme du cadre du produit */
+.product-list .card {
+  background-color: white;
+  padding: 1em;
+  border: none;
+  text-align: center;
+}
+
+/* Mise en forme du titre du produit */
+.card .title {
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: black;
+  text-align: center;
+  padding: 10px 0 10px 0;
+}
+
+/* Redimension image */
+.card img {
+  max-width: 80%;
+  border-radius: 5px;
+}
+
+/* Mise en forme description produit */
+.card .text {
+  text-align: center;
+  /* margin-left:2em; */
+}
+
+
+/* Mise en forme des boutons */
+.buy-now {
+  background-color: #fadadd;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  font-weight: bold;
+  margin: 10px;
+}
+
+.buy-now:hover {
+  background-color: white;
+  color: #fadadd;
+  border: solid 1px #fadadd;
+  padding: 10px;
+  border-radius: 5px;
+  font-weight: bold;
+  /* box-shadow: 0px 5px 5px silver; */
+}
+
+
+/* Mise en page des produits */
+.product-list {
+  display: grid;
+  /* En faire une grille */
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-column-gap: 20px;
+  grid-row-gap: 40px;
+}
+
+.connection {
+  display: block;
+  padding: 20px;
+}
+
+button {
+  margin: 10px;
+}
+
+/*========================================*/
+/* ============= RESPONSIVE ==============*/
+/*========================================*/
+
+
+
 @media screen and (min-width: 692px) {
   .car {
     display: grid;
@@ -844,7 +866,7 @@ font-weight:400;
   }
 }
 
-
+/* FICHE DESCRIPTION PRODUIT */
 @media screen and (min-width: 492px) {
   .car {
     display: grid;
@@ -871,7 +893,7 @@ font-weight:400;
 }
 
 
-
+/* BARRE DE NAVIGATION */
 @media (max-width: 800px) {
   .navbar {
       flex-direction: column;
@@ -906,31 +928,22 @@ font-weight:400;
 }
 
 
-.gallery{
-  min-height: 80vh;
-  width: 100%;
-  background-image: url(https://louyetu.fr/wp/wp-content/uploads/2019/10/LB_PLURIEL_BL08-1170x0.jpg);
-  background-position: center;
-  background-size: cover;
-  position: relative;
-}
+/* MISE EN FORME SECTION  */
+@media (max-width:991px) {
+  section .container {
+    max-width: 400px;
+  }
 
-.gallery img{
-  width: 40%;
-  margin: 5px;
-  transition: 1s;
-  border-radius: 20px;
-}
+  section .container .row li a {
+    display: none;
+  }
 
-.gallery img:hover{
-  transform: scale(1.1);
-}
+  section .container .row li a{
+    width: 100%;
+  }
 
-
-
-.photoBijoux { 
-  width: 30%;
-  margin: 5px;
-  border-radius: 20px;
+  section .container.active .row li a{
+    top: -100%;
+  }
 }
 

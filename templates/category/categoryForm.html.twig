@@ -1,6 +1,6 @@
 {% extends "base.html.twig" %}
 
-{% block title %}{% endblock %}
+{% block title %}Formulaire Catégories{% endblock %}
 
 
 {% block body %}
@@ -10,13 +10,13 @@
         {# {{ form_row(formCate.subCategory, {"label":"Sous Categorie",'attr': {placeholder:"Entrer la description de la catégorie"} }) }} #}
     
     {% if mode %}
-        <button type="submit" class="btn btn-success">Modifier la catégorie</button>
+        <button type="submit" class="buy-now">Modifier la catégorie</button>
     {% else %}
-        <button type="submit" class="btn btn-primary" >Créer une nouvelle catégorie</button>
+        <button type="submit" class="buy-now" >Créer une nouvelle catégorie</button>
 
     {% endif %}
     
     {{ form_end(formCate) }}   
-    <a href="{{path('cate')}}" type="submit" class="btn btn-primary">Retour</a>
+    <a href="{{path('cate')}}" type="submit" class="buy-now">Retour</a>
 
 {% endblock %}

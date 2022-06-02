@@ -1,15 +1,18 @@
 <!DOCTYPE html>
-<html lang="fr">
+	{# SECURITE DU SITE 
+		LISTE BIJOUX SHOP
+		PHOTO QUI NE S'EFFACE PAS DANS L'HISTORIQUE	#}
+<html
+	lang="fr">
 	<head>
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta
-		name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 		{# <!DOCTYPE html>
-		<html>
-		<head>
-		<meta charset="UTF-8"> #}
+				<html>
+				<head>
+				<meta charset="UTF-8"> #}
 		<title>
 			{% block title %}🌸Atelier Pauline🌸
 			{% endblock %}
@@ -46,6 +49,7 @@
 
 						<li class="nav-item">
 							<div class="dropdown">
+								
 								<span class="navtitle">SHOP</span>
 
 								<div class="dropdown-content">
@@ -59,17 +63,18 @@
 									{% endfor %}
 								</div>
 
+
 								{# <div class="dropdown-content">Pierres Naturelles
-								<a class="subCategory" href="{{path('all_necklaces')}}">Colliers</a>
-								<a class="subCategory" href="{{path('all_bracelets')}}">Bracelets</a>
-								<a class="subCategory" href="{{path('all_earings')}}">Boucles d'Oreilles</a>
+									<a class="subCategory" href="{{path('all_necklaces')}}">Colliers</a>
+									<a class="subCategory" href="{{path('all_bracelets')}}">Bracelets</a>
+									<a class="subCategory" href="{{path('all_earings')}}">Boucles d'Oreilles</a>
 								</div> #}
 
 							{# {% for cate in product %}
-							<li>{{cate}}</li> #}
+									<li>{{cate}}</li> #}
 								{# {% for item in items %}
-								<a class="subCategory" href="{{path('subCategory')}}"></a>
-								{% endfor %} #}
+									<a class="subCategory" href="{{path('subCategory')}}"></a>
+									{% endfor %} #}
 								{# {% endfor %} #}
 
 								{# </div> #}
@@ -95,7 +100,7 @@
 
 
 						{# LISTE DEROULANTE CRUD#}
-						{% if is_granted('ROLE_ADMIN') %}
+						{% if is_granted ('ROLE_ADMIN') %}
 							<li class="nav-item">
 								<div class="dropdown">
 									<span class="navtitle">REGLAGES</span>
@@ -123,22 +128,22 @@
 							<a class="navtitle" href={{path('app_login')}}>COMPTE</a>
 							{# <a class="navtitle" href={{path('app_register')}}>Créer son compte</a>  #}
 							{# app_register provient du controller registrationController (route)
-							app_login provient du controller securityController (route) 
-							app_logout provient du controller securityController(route)#}
+														app_login provient du controller securityController (route) 
+														app_logout provient du controller securityController(route)#}
 						{% endif %}
 
 						{# <li class="nav-item">
-						<a class="navtitle" href="#">PANIER</a>
-						</li> #}
+												<a class="navtitle" href="#">PANIER</a>
+												</li> #}
 
 
 						{# </div>
-						</li> #}
+												</li> #}
 					</ul>
 					{# <form class="d-flex">
-					<input class="form-control me-sm-2" type="text" placeholder="Search">
-					<button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-					</form> #}
+										<input class="form-control me-sm-2" type="text" placeholder="Search">
+										<button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+										</form> #}
 				</div>
 			</div>
 		</nav>
@@ -147,13 +152,13 @@
 		{% block body %}{% endblock %}
 
 		{# <script>
-		function toggleForm(){
-		section = document.querySelector('section');
-		container = document.querySelector('.container');
-		section.classList.toggle('active');
-		container.classList.toggle('active');
-		}
-		</script> #}
+				function toggleForm(){
+				section = document.querySelector('section');
+				container = document.querySelector('.container');
+				section.classList.toggle('active');
+				container.classList.toggle('active');
+				}
+				</script> #}
 
 		<!--===== FOOTER =====-->
 		<footer>
@@ -177,7 +182,7 @@
 				<a href="#">Politique de confidentialité</a>
 			</li>
 			<li>
-				<a href="#">Mentions légales</a>
+				<a href="{{path('mentionLegale')}}">Mentions légales</a>
 			</li>
 			<li>
 				<a class="footer__copy">&#169; atelier Pauline Rousseau</a>

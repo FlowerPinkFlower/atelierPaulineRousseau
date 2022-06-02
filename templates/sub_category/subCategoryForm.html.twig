@@ -1,10 +1,10 @@
 {% extends "base.html.twig" %}
 
-{% block title %}FORMULAIRE SOUS CATE{% endblock %}
+{% block title %}FORMULAIRE SOUS CATEGORIE{% endblock %}
 
 
 {% block body %}
-
+<h1>formulaire sous-catégorie</h1>
     {{ form_start(formsubCate) }}
 
         {{ form_row(formsubCate.name, {'label':"Nom", 'attr': {placeholder:"Entrer le nom de la sous catégorie"} } ) }}
@@ -14,9 +14,9 @@
         {# <td class="text-center" scope="col">{{subCategory.category}}</td> #}
 
         {% if mode %}
-            <button type="submit" class="btn btn-success"> Modifier une sous catégorie</button>  
+            <button type="submit" class="buy-now"> Modifier une sous catégorie</button>  
         {% else %}
-            <button type="submit" class="btn btn-success"> Créer une sous catégorie </button> 
+            <button type="submit" class="buy-now"> Créer une sous catégorie </button> 
         {% endif %}
 
     {{ form_end(formsubCate) }}

@@ -14,6 +14,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 class ProductController extends AbstractController
 {
@@ -26,7 +27,7 @@ class ProductController extends AbstractController
         $products=$prodRepo->findAll();
         return $this->render('product/index.html.twig', [
             'products' => $products,
-            'subCate'=>$subCateRepo->findAll(),  
+            'SubCate'=>$subCateRepo->findAll(),  
             'cate'=>$cateRepo->findAll()
         ]);
     }
@@ -137,60 +138,68 @@ class ProductController extends AbstractController
      * @Route("/product/update/{id}", name="update_prod")
      */
     public function addOrUpdateProduct(Product $product=NULL, Request $request, EntityManagerInterface $em, SubCategoryRepository $subCateRepo, CategoryRepository $cateRepo){
-        if (!$product) {
-            $product = new Product();
-        }
-        $formProd=$this->createForm(ProdType::class,$product); //creation du formulaire
-        
-        $formProd->handleRequest($request); //traiter la demande = handle request.
+        try {
+            $this->denyAccessUnlessGranted('ROLE_ADMIN');
 
-        if ($formProd->isSubmitted() && $formProd->isValid()) {
-
-            if($product->getPhoto()){
-                $photoName=$this->getParameter('images_directory'). '/' . $product->getPhoto();
-                if(file_exists($photoName)){ //si la photo existe, elle est supprimé
-                    unlink($photoName);
-                }
+            if (!$product) {
+                $product = new Product();
             }
+            $formProd=$this->createForm(ProdType::class,$product); //creation du formulaire
             
-            $photoProd=$formProd->get('photo')->getData(); //méthode qui permet de récupérer la donnée de la photo
-
-            $photo = md5(uniqid()) . '.' . $photoProd->guessExtension(); //uniqid = basé sur le temps donc jamais un id identique
-            $photoProd->move($this->getParameter('images_directory'), $photo);
-
-            
-            $product->setPhoto($photo);
-            $em->persist($product); //on persiste produit
-            $em->flush();
-            
-            return $this->redirectToRoute('prod');
-        }
+            $formProd->handleRequest($request); //traiter la demande = handle request.
     
-        return $this->render('product/productForm.html.twig', [
-            'formProd' => $formProd->createView(), //créer la nouvelle catégorie
-            'mode' => $product ->getId() !==null, //modifie la catégorie
-            'subCate'=>$subCateRepo->findAll(),  
-            'cate'=>$cateRepo->findAll()
-        ]);
+            if ($formProd->isSubmitted() && $formProd->isValid()) {
+    
+                if($product->getPhoto()){
+                    $photoName=$this->getParameter('images_directory'). '/' . $product->getPhoto();
+                    if(file_exists($photoName)){ //si la photo existe, elle est supprimé
+                        unlink($photoName);
+                    }
+                }
+                
+                $photoProd=$formProd->get('photo')->getData(); //méthode qui permet de récupérer la donnée de la photo
+    
+                $photo = md5(uniqid()) . '.' . $photoProd->guessExtension(); //uniqid = basé sur le temps donc jamais un id identique
+                $photoProd->move($this->getParameter('images_directory'), $photo);
+    
+                
+                $product->setPhoto($photo);
+                $em->persist($product); //on persiste produit
+                $em->flush();
+                
+                return $this->redirectToRoute('prod');
+            }
+        
+            return $this->render('product/productForm.html.twig', [
+                'formProd' => $formProd->createView(), //créer la nouvelle catégorie
+                'mode' => $product ->getId() !==null, //modifie la catégorie
+                'SubCate'=>$subCateRepo->findAll(),  
+                'cate'=>$cateRepo->findAll()
+            ]);
+        } catch (AccessDeniedException $ex) {
+            return $this->redirectToRoute('home');
+        }
         
     }
-
-
-
- 
-
 
     //SUPPRIMER PRODUIT
     /**
      * @Route("/product/delete/{id}", name="delete_prod")
      */
     public function deleteProduct(Product $product, EntityManagerInterface $em, SubCategoryRepository $subCateRepo, CategoryRepository $cateRepo){
+       try {
+        $this->DenyAccessUnlessGranted('ROLE_ADMIN');
         $em->remove($product);
         $em->flush();
         return $this->redirectToRoute('prod',[
-            'subCate'=>$subCateRepo->findAll(),  
+            'SubCate'=>$subCateRepo->findAll(),  
             'cate'=>$cateRepo->findAll()
         ]);
+       } catch (AccessDeniedException $ex) {
+           return $this->redirectToRoute('home');
+       }
+
+
     }
 }
 

@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 /**
@@ -23,11 +24,16 @@ class UserController extends AbstractController
      */
     public function index(UserRepository $userRepository, CategoryRepository $cateRepo, SubCategoryRepository $subCateRepo): Response
     {
+       try {
+           $this->denyAccessUnlessGranted('ROLE_ADMIN');
         return $this->render('user/index.html.twig', [
             'users' => $userRepository->findAll(),
             'cate'=>$cateRepo->findAll(),
             'SubCate'=>$subCateRepo->findAll()
         ]);
+       } catch (AccessDeniedException $ex) {
+           return $this->redirectToRoute('home');
+       }
     }
 
 
@@ -36,7 +42,9 @@ class UserController extends AbstractController
      */
     public function new(Request $request, UserRepository $userRepository, UserPasswordHasherInterface $userPasswordHasher, CategoryRepository $cateRepo, SubCategoryRepository $subCateRepo): Response
     {
-        $user = new User();
+        try {
+            $this->denyAccessUnlessGranted('ROLE_ADMIN');
+            $user = new User();
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
 
@@ -58,6 +66,9 @@ class UserController extends AbstractController
             'cate'=>$cateRepo->findAll(),
             'SubCate'=>$subCateRepo->findAll()
         ]);
+        } catch (AccessDeniedException $ex) {
+            return $this->redirectToRoute('home');
+        }
     }
 
 
@@ -66,11 +77,17 @@ class UserController extends AbstractController
      */
     public function show(User $user, CategoryRepository $cateRepo, SubCategoryRepository $subCateRepo): Response
     {
-        return $this->render('user/show.html.twig', [
-            'user' => $user,
-            'cate'=>$cateRepo->findAll(),
-            'SubCate'=>$subCateRepo->findAll()
-        ]);
+        try {
+            $this->DenyAccessUnlessGranted('ROLE_ADMIN');
+
+            return $this->render('user/show.html.twig', [
+                'user' => $user,
+                'cate'=>$cateRepo->findAll(),
+                'SubCate'=>$subCateRepo->findAll()
+            ]);
+        } catch (accessDeniedException $ex) {
+            return $this->redirectToRoute('home');
+        }
     }
 
     /**
@@ -78,7 +95,10 @@ class UserController extends AbstractController
      */
     public function edit(Request $request, User $user, UserRepository $userRepository, CategoryRepository $cateRepo, SubCategoryRepository $subCateRepo): Response
     {
-        $form = $this->createForm(UserType::class, $user);
+        try {
+            $this->DenyAccessUnlessGranted('ROLE_ADMIN');
+
+            $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -92,6 +112,10 @@ class UserController extends AbstractController
             'cate'=>$cateRepo->findAll(),
             'SubCate'=>$subCateRepo->findAll()
         ]);
+        } 
+        catch (accessDeniedException $ex) {
+            return $this->redirectToRoute('home');
+        }
     }
 
     /**
@@ -99,10 +123,17 @@ class UserController extends AbstractController
      */
     public function delete(Request $request, User $user, UserRepository $userRepository): Response
     {
+       try {
+           $this->DenyAccessUnlessGranted('ROLE_ADMIN');
+
         if ($this->isCsrfTokenValid('delete'.$user->getId(), $request->request->get('_token'))) {
             $userRepository->remove($user);
         }
 
         return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
+       } 
+       catch (AccessDeniedException $ex) {
+           return $this->redirectToRoute('home');
+       }
     }
 }

@@ -1,7 +1,6 @@
 <?php
 
 namespace App\DataFixtures;
-
 use Faker\Factory;
 use App\Entity\Product;
 use App\Entity\Category;
@@ -20,8 +19,7 @@ class AppFixtures extends Fixture
             $cat = new Category();
             $cat->setName($faker->word());  //Création de faux nom de catégories
             $cat->setDescription($faker->realText($maxNbChars=100, $indexSize=2));  
-            $manager->persist($cat); //prépare une entité pour la création. C'est l'étape qui va dire "cette entité va être liée à quelque chose en base".
-            //Pour faire des mises à jour sur des entités, il n'y a pas besoin d'utiliser persist, même si l'utiliser ne posera pas de problème
+            $manager->persist($cat); 
 
             //POUR LES SOUS CATEGORIES
             for ($s=0; $s<3 ; $s++) { 
@@ -37,13 +35,13 @@ class AppFixtures extends Fixture
                     $prod=new Product();
                     $prod->setName($faker->word());
                     $prod->setQuantity($faker->randomNumber(2, true));
-                    $prod->setunitPrice($faker->randomFloat(2, 1,35)); //deux chiffres après la virgule dont le prix doit varier entre 1 et 35€
-                    $prod->setSubCategory($subCate); //création de la relation entre la table article et categorie
+                    $prod->setunitPrice($faker->randomFloat(2, 1,35)); 
+                    $prod->setSubCategory($subCate);
                     $manager->persist($prod);
                 }
                 
             }
-            $manager->flush(); //va être l'étape qui va envoyer les info en BDD. C'est dc la méthode ç ne pas oublier d'appeler après tte manipulation d'entité.
+            $manager->flush();
         }
     }
 }

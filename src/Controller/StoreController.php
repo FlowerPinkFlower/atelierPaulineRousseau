@@ -57,6 +57,17 @@ class StoreController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route("/mentionLegale", name="mentionLegale")
+     */
+    public function mentionLegale(SubCategoryRepository $subCateRepo, CategoryRepository $cateRepo): Response
+    {
+        return $this->render('store/mentionLegale.html.twig',[
+        'cate'=>$cateRepo->findAll(),
+        'SubCate'=>$subCateRepo->findAll()
+        ]);
+    }
+
     // /**
     //  * @Route("/", name="home")
     //  */
@@ -85,6 +96,17 @@ class StoreController extends AbstractController
     public function conseils(SubCategoryRepository $subCateRepo, CategoryRepository $cateRepo): Response
     {
         return $this->render('store/conseils.html.twig',[
+        'cate'=>$cateRepo->findAll(),
+        'SubCate'=>$subCateRepo->findAll()
+        ]);
+    }
+
+    /**
+     * @Route("/erreur", name="erreur")
+     */
+    public function erreur(SubCategoryRepository $subCateRepo, CategoryRepository $cateRepo): Response
+    {
+        return $this->render('store/erreur.html.twig',[
         'cate'=>$cateRepo->findAll(),
         'SubCate'=>$subCateRepo->findAll()
         ]);
