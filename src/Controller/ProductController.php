@@ -182,6 +182,7 @@ class ProductController extends AbstractController
         
     }
 
+
     //SUPPRIMER PRODUIT
     /**
      * @Route("/product/delete/{id}", name="delete_prod")

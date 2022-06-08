@@ -22,16 +22,16 @@ class CategoryController extends AbstractController
     public function showAllCategories(CategoryRepository $cateRepo, SubCategoryRepository $subCateRepo): Response
     {
         try{
-            $this->denyAccessUnlessGranted('ROLE_ADMIN'); //je ne lui donne pas accès que si c'est un role admin
-            $categories = $cateRepo->findAll(); //On lui demande d'afficher toutes les catégories
+            $this->denyAccessUnlessGranted('ROLE_ADMIN'); //Refusé l'accès sauf si c'est l'administrateur
+            $categories = $cateRepo->findAll(); 
             return $this->render('category/index.html.twig', [
                 'categories' => $categories,
                 'cate'=>$cateRepo->findAll(),
                 'SubCate'=>$subCateRepo->findAll(),
             ]);
         }
-        catch(AccessDeniedException $ex){  //accès refusé car pas administrateur
-            return $this->redirectToRoute('home'); //retourne la page home si c'est pas l'admin
+        catch(AccessDeniedException $ex){  //Si l'accès est refusé alors redirigé la personne vers la page d'accueil
+            return $this->redirectToRoute('home'); 
         }
     }
 

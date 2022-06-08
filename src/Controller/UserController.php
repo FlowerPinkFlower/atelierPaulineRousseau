@@ -19,6 +19,25 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
  */
 class UserController extends AbstractController
 {
+
+    /**
+     * @Route("/{id}", name="app_user_show", methods={"GET"})
+     */
+    public function show(User $user, CategoryRepository $cateRepo, SubCategoryRepository $subCateRepo): Response
+    {
+        try {
+            $this->DenyAccessUnlessGranted('ROLE_ADMIN');
+
+            return $this->render('user/show.html.twig', [
+                'user' => $user,
+                'cate'=>$cateRepo->findAll(),
+                'SubCate'=>$subCateRepo->findAll()
+            ]);
+        } catch (accessDeniedException $ex) {
+            return $this->redirectToRoute('home');
+        }
+    }
+
     /**
      * @Route("/", name="app_user_index", methods={"GET"})
      */
@@ -44,51 +63,35 @@ class UserController extends AbstractController
     {
         try {
             $this->denyAccessUnlessGranted('ROLE_ADMIN');
-            $user = new User();
-        $form = $this->createForm(UserType::class, $user);
-        $form->handleRequest($request);
+                $user = new User();
+                $form = $this->createForm(UserType::class, $user);
+                $form->handleRequest($request);
 
-        // function mot de passe hash automatique
-        if ($form->isSubmitted() && $form->isValid()) { 
-            $user->setPassword(
-            $userPasswordHasher->hashPassword(
-                $user,
-                $form->get('password')->getData()
-                )
-            );
-            $userRepository->add($user);
-            return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
-        }
+                // function mot de passe hash automatique
+                if ($form->isSubmitted() && $form->isValid()) { 
+                    $user->setPassword(
+                    $userPasswordHasher->hashPassword(
+                        $user,
+                        $form->get('password')->getData()
+                        )
+                    );
+                    $userRepository->add($user);
+                    return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
+                }
 
-        return $this->renderForm('user/new.html.twig', [
-            'user' => $user,
-            'form' => $form,
-            'cate'=>$cateRepo->findAll(),
-            'SubCate'=>$subCateRepo->findAll()
-        ]);
+                return $this->renderForm('user/new.html.twig', [
+                    'user' => $user,
+                    'form' => $form,
+                    'cate'=>$cateRepo->findAll(),
+                    'SubCate'=>$subCateRepo->findAll()
+                ]);
         } catch (AccessDeniedException $ex) {
             return $this->redirectToRoute('home');
         }
     }
 
 
-    /**
-     * @Route("/{id}", name="app_user_show", methods={"GET"})
-     */
-    public function show(User $user, CategoryRepository $cateRepo, SubCategoryRepository $subCateRepo): Response
-    {
-        try {
-            $this->DenyAccessUnlessGranted('ROLE_ADMIN');
 
-            return $this->render('user/show.html.twig', [
-                'user' => $user,
-                'cate'=>$cateRepo->findAll(),
-                'SubCate'=>$subCateRepo->findAll()
-            ]);
-        } catch (accessDeniedException $ex) {
-            return $this->redirectToRoute('home');
-        }
-    }
 
     /**
      * @Route("/{id}/edit", name="app_user_edit", methods={"GET", "POST"})
