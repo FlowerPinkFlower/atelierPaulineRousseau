@@ -55,6 +55,22 @@ class UserController extends AbstractController
        }
     }
 
+    
+    /**
+     * @Route("/utilisateur/{id}", name="utilisateur", methods={"GET"})
+     */
+    public function utilisateur(User $user,CategoryRepository $cateRepo, SubCategoryRepository $subCateRepo): Response
+    {
+        
+            return $this->render('user/test.html.twig', [
+                'user' => $user,
+                'cate'=>$cateRepo->findAll(),
+                'SubCate'=>$subCateRepo->findAll()
+            ]);
+            return $this->redirectToRoute('home');
+        
+    }
+
 
     /**
      * @Route("/new", name="app_user_new", methods={"GET", "POST"})
@@ -139,4 +155,6 @@ class UserController extends AbstractController
            return $this->redirectToRoute('home');
        }
     }
+
+
 }

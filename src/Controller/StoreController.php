@@ -3,10 +3,11 @@
 namespace App\Controller;
 
 
+use App\Entity\User;
 use App\Entity\Category;
 use App\Repository\CategoryRepository;
-use App\Repository\SubCategoryRepository;
 // use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use App\Repository\SubCategoryRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -111,5 +112,5 @@ class StoreController extends AbstractController
         'SubCate'=>$subCateRepo->findAll()
         ]);
     }
-
+    
 }

@@ -31,8 +31,8 @@ class ProdType extends AbstractType
             ->add('gilding')
             ->add('chainLength')
             ->add('photo', FileType::class, [
-                'mapped'=>false,
-                'required'=>false
+                'mapped'=>false, //pour que ca n'envoi pas lié dans la base de données
+                'required'=>false //si c'est obligatoire
                 ])
 
 

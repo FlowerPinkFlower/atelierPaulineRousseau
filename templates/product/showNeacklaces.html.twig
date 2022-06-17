@@ -1,34 +1,9 @@
 {# VERSION TABLEAU #}
 {% extends 'base.html.twig' %}
 
-{% block title %}COLLIERS{% endblock %}
+{% block title %}{{necklace.name}}{% endblock %}
 
 {% block body %}
-{# <h1>{{necklace.name}}</h1> #}
-{# 
-    <div class="container">
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th class="text-center" scope="col">Nom</th>
-                    <th class="text-center" scope="col">Description</th>
-                    <th class="text-center" scope="col">Quantité</th>
-                    <th class="text-center" scope="col">Prix unitaire</th>
-                </tr>
-            </thead>
-            <tbody>
-                    
-                    <tr>
-                        <td class="text-center" scope="col">{{necklace.name}}</td>
-                        <td class="text-center" scope="col">{{necklace.description}}</td>
-                        <td class="text-center" scope="col">{{necklace.quantity}}</td>
-                        <td class="text-center" scope="col">{{necklace.unitprice}}</td> 
-                    </tr>
-                    
-            </tbody>
-        </table>
-    </div> #}
-
 
 <div class="car-wrapper">
     <div class="car">
@@ -48,13 +23,6 @@
                 <!-- <p class="last-price">Ancien prix: <span>37€</span></p> -->
                 <p class="new-price"><span>{{necklace.unitprice}}€</span></p>
             </div>
-
-             <div class="purchase-info">
-                {# <input type="number" min="0" value="1"> #}
-                {# <button type="button" class="btn">Compare</button> #}
-            </div>
-            
-            {# <a href="#" class="product-link">Ajouter au panier</a> #}
             
             <div class="product-detail">
                 <h2>Description</h2>
@@ -74,12 +42,13 @@
                 </ul>
             </div>
 
-            <div class="social-links">
+            {# <div class="social-links">
                 <a href="https://www.etsy.com/fr/shop/AtelierPaulineR"></a>
                 <a href="https://www.instagram.com/atelier.pauline_bijoux/"></a> 
-            </div>
+            </div> #}
 
         </div>
+            <a class="buy-now-product" href="{{asset('https://www.etsy.com/fr/shop/AtelierPaulineR')}}">Acheter produit</a>
 
     </div>
 </div>

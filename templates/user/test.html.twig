@@ -1,0 +1,31 @@
+{# VERSION TABLEAU #}
+{% extends 'base.html.twig' %}
+
+{% block title %}INFORMATION PERSONNELLE{% endblock %}
+
+{% block body %}
+
+<h1>Informations personnelles</h1>
+
+{# <a class="buy-now" href="{{path('new_cate')}}">Créer</a> #}
+    <div class="container">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th class="text-center" scope="col">Nom</th>
+                    <th class="text-center" scope="col">Prénom</th>
+                    <th class="text-center" scope="col">Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="text-center" scope="col">{{user.lastname}}</td>
+                    <td class="text-center" scope="col">{{user.firstname}}</td>
+                    <td class="text-center" scope="col">{{user.email}}</td>
+                    {# <td><a href="{{path('app_user_delete', {'id':user.id} ) }}" class="buy-now">Supprimer</a></td> #}
+                    {# <td><a href="{{path('app_user_edit', {'id':user.id} )}}" class="buy-now">Modifier</a></td> #}
+                </tr>
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

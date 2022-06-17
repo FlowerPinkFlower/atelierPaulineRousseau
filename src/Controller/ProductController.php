@@ -57,11 +57,11 @@ class ProductController extends AbstractController
             'necklace' => $products,
             'cate'=>$cateRepo->findAll(),
             'SubCate'=>$subCateRepo->findAll(),
-         ]);
+        ]);
     }
 
         
-    //AFFICHAGE COLLIERS ONGLET PRODUITS SHOP
+    //AFFICHAGE DESCRIPTION COLLIER ONGLET PRODUITS SHOP SELON ID
     /**
      * @Route("/product/allnecklaces/necklace/{id}", name="necklace", methods={"GET"})
      */
@@ -88,6 +88,7 @@ class ProductController extends AbstractController
             'SubCate'=>$subCateRepo->findAll()  
         ]);
     }
+    //AFFICHAGE DESCRIPTION BRACELET ONGLET PRODUITS SHOP SELON ID
 
     /**
      * @Route("/product/allbracelets/bracelet/{id}", name="bracelet", methods={"GET"})
@@ -117,8 +118,7 @@ class ProductController extends AbstractController
         ]);
     }
 
-        
-    //AFFICHAGE BOUCLE D'OREILLES ONGLET PRODUITS SHOP
+    //AFFICHAGE DESCRIPTION BOUCLE D'OREILLES ONGLET PRODUITS SHOP SELON ID
     /**
      * @Route("/product/allearings/earing/{id}", name="earing", methods={"GET"})
      */

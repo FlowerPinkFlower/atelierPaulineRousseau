@@ -8,7 +8,6 @@
 <section class="header_product">
         <div class="text-box">
             <h1>COLLIERS</h1></br></br>
-            <a href="#" class="hero-btn">Venez découvrir notre marque</a>
         </div>
 </section>
 
@@ -19,7 +18,7 @@
                         {# <div class="image"> <img src="https://i.etsystatic.com/34806363/r/il/9008d3/3879418349/il_1588xN.3879418349_omhf.jpg" alt="boucle d'oreille"> </div> #}
                         <div class="image"><img  src="{{asset("uploads/" ~ neck.photo)}}"  alt="bijoux"></img></div>
                         <div class="title">{{neck.name}}</div>
-                        <div class="text">{{neck.unitprice}}</div>
+                        <div class="text">{{neck.unitprice}}€</div>
                         <a class="buy-now" href="{{path('necklace', {'id': neck.id} )}}">Voir produit</a>
 
                     </div>

@@ -1,38 +1,14 @@
-{# VERSION TABLEAU #}
 {% extends 'base.html.twig' %}
 
 {% block title %}{{earing.name}}{% endblock %}
 
 {% block body %}
-{# <h1>{{earing.name}}</h1> #}
-{# 
-    <div class="container">
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th class="text-center" scope="col">Nom</th>
-                    <th class="text-center" scope="col">Description</th>
-                    <th class="text-center" scope="col">Quantité</th>
-                    <th class="text-center" scope="col">Prix unitaire</th>
-                </tr>
-            </thead>
-            <tbody>
-                    
-                        <tr>
-                            <td class="text-center" scope="col">{{earing.name}}</td>
-                            <td class="text-center" scope="col">{{earing.description}}</td>
-                            <td class="text-center" scope="col">{{earing.quantity}}</td>
-                            <td class="text-center" scope="col">{{earing.unitprice}}</td> 
-                        </tr>
-                    
-            </tbody>
-        </table>
-    </div>
- #}
-
-
 <div class="car-wrapper">
     <div class="car">
+            <h2 class="product-title">{{earing.name}}</h2>
+            <div class="product-price">
+                <p class="new-price"><span>{{earing.unitprice}}€</span></p>
+            </div>
         <div class="product-imgs">
             <div class="img-display">
                 <div class="img-showcase">
@@ -41,17 +17,12 @@
             </div>
         </div>
         <div class="product-content">
-            <h2 class="product-title">{{earing.name}}</h2>
             
             
-            <div class="product-price">
-                <p class="new-price"><span>{{earing.unitprice}}€</span></p>
-            </div>
 
              <div class="purchase-info">
             </div>
-            
-
+          
              <div class="product-detail">
                 <h2>Description</h2>
                 <ul>
@@ -73,10 +44,7 @@
                 </ul>
             </div>
 
-            <div class="social-links">
-                <a href="https://www.etsy.com/fr/shop/AtelierPaulineR"></a>
-                <a href="https://www.instagram.com/atelier.pauline_bijoux/"></a> 
-            </div>
+            <a class="buy-now-product" href="{{asset('https://www.etsy.com/fr/shop/AtelierPaulineR')}}">Acheter produit</a>
 
         </div>
 

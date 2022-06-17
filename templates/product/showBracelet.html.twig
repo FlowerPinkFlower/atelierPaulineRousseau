@@ -1,37 +1,9 @@
 {# VERSION TABLEAU #}
 {% extends 'base.html.twig' %}
 
-{% block title %}BOUCLES D'OREILLES{% endblock %}
+{% block title %}{{bracelet.name}}{% endblock %}
 
 {% block body %}
-{# <h1>{{earing.name}}</h1> #}
-{# 
-    <div class="container">
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th class="text-center" scope="col">Nom</th>
-                    <th class="text-center" scope="col">Description</th>
-                    <th class="text-center" scope="col">Quantité</th>
-                    <th class="text-center" scope="col">Prix unitaire</th>
-                </tr>
-            </thead>
-            <tbody>
-                    
-                        <tr>
-                            <td class="text-center" scope="col">{{earing.name}}</td>
-                            <td class="text-center" scope="col">{{earing.description}}</td>
-                            <td class="text-center" scope="col">{{earing.quantity}}</td>
-                            <td class="text-center" scope="col">{{earing.unitprice}}</td> 
-                        </tr>
-                    
-            </tbody>
-        </table>
-    </div>
- #}
-
-
-
 
 <div class="car-wrapper">
     <div class="car">
@@ -46,29 +18,22 @@
 
         <div class="product-content">
             <h2 class="product-title">{{bracelet.name}}</h2>
-            
-            
             <div class="product-price">
-                <!-- <p class="last-price">Ancien prix: <span>37€</span></p> -->
                 <p class="new-price"><span>{{bracelet.unitprice}}€</span></p>
             </div>
 
-             <div class="purchase-info">
-                {# <input type="number" min="0" value="1"> #}
-                {# <button type="button" class="btn">Compare</button> #}
-            </div>
-            
-            {# <a href="#" class="product-link">Ajouter au panier</a> #}
+             <div class="purchase-info"></div>
 
+
+            
              <div class="product-detail">
                 <h2>Description</h2>
-                {# <p>Boucles d'oreilles marbré</p> #}
                 <ul>
                     <li>Article fait main</li>
                     <li>{{bracelet.description}}</li>
                 </ul>
                 <h2>Détail</h2>
-                {# <p>Boucles d'oreilles marbré</p> #}
+                
                 <ul>
                     <li>{{bracelet.material}}</li>
                     <li>{{bracelet.diameter}}</li>
@@ -78,10 +43,7 @@
                 </ul>
             </div>
 
-            <div class="social-links">
-                <a href="https://www.etsy.com/fr/shop/AtelierPaulineR"></a>
-                <a href="https://www.instagram.com/atelier.pauline_bijoux/"></a> 
-            </div>
+            <button class="buy-now-product" href="{{asset('https://www.etsy.com/fr/shop/AtelierPaulineR')}}">Acheter produit</button>
 
         </div>
 

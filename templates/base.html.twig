@@ -11,10 +11,9 @@
 				<head>
 				<meta charset="UTF-8"> #}
 		<title>
-			{% block title %}🌸Atelier Pauline🌸
-			{% endblock %}
+			{% block title %}🌸Atelier Pauline🌸{% endblock %}
 		</title>
-		{# <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>🌸</text></svg>"> #}
+		<link rel="icon" href="{{asset('uploads/logo.png')}}">
 		{# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
 
 
@@ -48,14 +47,14 @@
 							<div class="dropdown">
 								
 								<span class="navtitle">SHOP</span>
-
+							
 								<div class="dropdown-content">
 									{% for cates in cate %}
 										{{cates.name}}
-										{% for nomSubCategorie in SubCate %}
+										{% for nomSubCategorie in SubCate %}											
 											<a class="subCategory" href="{{path('all_bracelets')}}">{{nomSubCategorie.name}}</a>
 											<a class="subCategory" href="{{path('all_necklaces')}}">{{nomSubCategorie.name}}</a>
-											<a class="subCategory" href="{{path('all_earings')}}">{{nomSubCategorie.name}}</a>
+											<a class="subCategory" href="{{path('all_earings')}}">{{nomSubCategorie.name}}</a>										
 										{% endfor %}
 									{% endfor %}
 								</div>
@@ -113,13 +112,19 @@
 
 						{# CONNEXION DECONNEXION CREER SON COMPTE #}
 						<li class="nav-item">
-							{% if app.user %}
-								<a
-									class="navtitle" href={{path('app_logout')}}>
-									{# Deconnexion #}
-									{{app.user.firstname}}</a>
+							{% if is_granted ('ROLE_USER') %}
+						
+								<div class="dropdown">
+										<a class="navtitle" href="{{path('app_user_index')}}"> {{app.user.firstname}}</a>
+									<div class="dropdown-content">
+										<a class="subCategory" href="{{path('utilisateur', {id:app.user.id})}}">UTILISATEUR</a>
+										<a class="subCategory" href="{{path('app_logout')}}">DECONNEXION</a>
+									</div>
+								</div>
 
-							</li>
+
+						</li>
+
 						{% else %}
 							{# <a class="navtitle" href={{path('app_login')}}>CONNEXION </a> #}
 							<a class="navtitle" href={{path('app_login')}}>COMPTE</a>
